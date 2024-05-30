@@ -21,7 +21,8 @@
 
                 </div>  
                 <div class="inside">
-                {!!Form::open(['url'=>'/admin/product/add','files'=>true])!!}
+                    {{--Envio del fomulario--}}
+                {!!Form::open(['url'=>'/admin/product/'.$p->id.'/edit','files'=>true])!!}
                 <div class="row">
                     <div class="col-md-4">
                         <label for="name">Nombre del producto:</label>
@@ -79,6 +80,13 @@
                             {!!Form::number('discount', $p->discount, ['class'=>'form-control', 'min'=>'0.00','step'=>'any'])!!}
                         </div>
                     </div>
+                    <div class="col-md-3">
+                        <label for="indiscount">Estado: </label>
+                        <div class="input-group">
+                            <span class="input-group-text" id="basic-addon1"><i class="fa-regular fa-pen-to-square"></i></span>
+                            {{form::select('status',['0'=>'Privado', '1'=>'Público'],$p->status,['class'=>'form-select'])}}
+                        </div>
+                    </div>
                 </div>
 
                 <div class="row ">
@@ -99,13 +107,30 @@
         <div class="col-md-3">
             <div class="panel shadow">
                 <div class="header">
-                    <h2 class="title"><i class="fa-solid fa-image"></i> Imagenes</h2>
+                    <h2 class="title"><i class="fa-solid fa-image"></i> Imagen destacada</h2>
                     </div>
                     <div class="inside">
                         <img src="{{url('/uploads/'.$p->file_path.'/'.$p->image)}} " class="img-fluid" alt="imagen destacada del producto x" >
                     </div>
                 </div>    
-            </div>
+            
+            <div class="panel shadow mtop16">
+                <div class="header">
+                    <h2 class="title"><i class="fa-solid fa-image"></i> Galeria</h2>
+                </div>
+                    <div class="inside   product_gallery  ">
+                        {{Form::open(['url'=> 'admin/product/'.$p->id.'/gallery/add', 'files'=>true, 'id'=>'form_product_gallery'])}}
+                        {!!Form::file('file_image',['id'=>'product_file_image','accept'=>'image/*', 'style'=>'display:none;', 'required'])!!}
+                        {!!Form::close()!!}
+                        <div class="tumb">
+                            <a href="#" id="btn_product_file_image"><i class="fa-solid fa-plus"></i></a>
+                        </div>
+                    </div>
+            </div>    
+
+        </div>
+
+
            
         </div>
     </div>
