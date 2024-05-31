@@ -122,7 +122,7 @@
                         {{Form::open(['url'=> 'admin/product/'.$p->id.'/gallery/add', 'files'=>true, 'id'=>'form_product_gallery'])}}
                         {!!Form::file('file_image',['id'=>'product_file_image','accept'=>'image/*', 'style'=>'display:none;', 'required'])!!}
                         {!!Form::close()!!}
-                        <div class="tumb">
+                        <div class="btn-submit">
                             <a href="#" id="btn_product_file_image"><i class="fa-solid fa-plus"></i></a>
                         </div>
                     </div>

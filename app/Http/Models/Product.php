@@ -13,7 +13,13 @@ class Product extends Model
     protected $table = 'products';
     protected $hidden = ['created_at', 'updated_at'];
 
+    // acceso a la categoia asocianda del producto 
     public function cat(){
         return $this->belongsTo(Category::class, 'category_ID');
+    }
+
+
+    public function getGallery(){
+        return $this->hasMany(PGallery::class, 'id', 'product_id');
     }
 }
