@@ -125,6 +125,15 @@
                         <div class="btn-submit">
                             <a href="#" id="btn_product_file_image"><i class="fa-solid fa-plus"></i></a>
                         </div>
+                        <div class="tumbs">
+                            @foreach($p->getGallery as $img)
+                            <div class="tumb">
+                                <a href="{{url('/admin/product/'.$p->id.'/gallery/'.$img->id.'/delete')}}" data-togglle = "tooltip" data-placement= 'top' title= 'Eliminar'><i class="fas fa-trash"></i>
+                                </a>
+                                <img src="{{url('/uploads/'.$img->file_path.'/t_'.$img->file_name)}}" alt=" imagenes del producto">
+                            </div>
+                            @endforeach
+                        </div>
                     </div>
             </div>    
 

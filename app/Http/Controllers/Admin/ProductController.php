@@ -198,7 +198,7 @@ class ProductController extends Controller
                 $fileExt = trim($request->file('file_image')->getClientOriginalExtension());
                 // Ruta para guardar la imagen
                 $upload_path = Config::get('filesystems.disks.uploads.root');
-                //para evitar carecteres especiales
+                //para evitar carecteres especiales (opcional)
                 $name = Str::slug(str_replace($fileExt,'', $request->file('file_image')
                 ->getClientOriginalName()));
                 //nombre del archivo
@@ -233,5 +233,26 @@ class ProductController extends Controller
 
         endif;
     }
+
+function getProductGalleryDelete($id, $gid){
+    $g =  PGallery::findOrFail($gid);
+    $path = $g->file_path;
+    $file = $g->file_name;
+    $upload_path = Config::get('filesystems.disks.uploads.root');
+    // Medida de seguridad
+    if($g->product_id != $id){
+        return back()->with('message','La imagen esta relacionada con otro producto o no corresponde la image')->with('typealert','danger');
+    }else{
+        // Eliminacion de la BD
+        if($g->delete()):
+            // Eliminacion de disco
+            unlink($upload_path.'/'.$path.'/'.$file);
+            unlink($upload_path.'/'.$path.'/'.'t_'.$file);
+            return back()->with('message','Imagen eliminada con exito')->with('typealert','success') ;
+            
+        endif;
+    }
+
+}
 
 }

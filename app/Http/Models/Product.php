@@ -20,6 +20,6 @@ class Product extends Model
 
 
     public function getGallery(){
-        return $this->hasMany(PGallery::class, 'id', 'product_id');
+        return $this->hasMany(PGallery::class, 'product_id', 'id');
     }
 }

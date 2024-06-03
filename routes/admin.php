@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Support\Facades\Route;
 
 Route::prefix('/admin')->group(function(){
     Route :: get('/', 'Admin\DashboardController@getDashboard');
@@ -11,6 +11,7 @@ Route::prefix('/admin')->group(function(){
     Route::post('/product/add', 'Admin\ProductController@postProductAdd');
     Route::post('/product/{id}/edit', 'Admin\ProductController@postProductEdit');
     Route::post('/product/{id}/gallery/add', 'Admin\ProductController@postProductGalleryAdd');
+    Route::get('/product/{id}/gallery/{gid}/delete', 'Admin\ProductController@getProductGalleryDelete');
 
     // Module Categories
     Route::get('/categories/{module}', 'Admin\CategoriesController@getHome');
