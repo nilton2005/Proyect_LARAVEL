@@ -101,8 +101,18 @@ h2,h3,h4,h5,ul,body,html
                     &:hover
                        background-color #ff8478
                        box-shadow 0 0.5rem 1rem #f3c7db
-                       color #ffff !important
+                       color #fff !important
                        text-decoration none
+                a.active
+                    background-color #ff8478
+                    box-shadow 0 0.5rem 1rem #f3c7db
+                    color #fff !important
+                    text-decoration none
+
+
+
+
+
 .navbar
     background-color #ff8478
     .nav-link
@@ -132,7 +142,7 @@ h2,h3,h4,h5,ul,body,html
             border-bottom 2px solid red
             h2.title
                 display inline-block
-                color #19213dlllllllll
+                color #19213d
                 font-size 1.1em
                 padding 11px 15px
         .inside
@@ -186,13 +196,13 @@ h2,h3,h4,h5,ul,body,html
 
   @keyframes move 
     0% 
-      transform: translateX(0)
+      transform translateX(0)
     
     50% 
-      transform: translateX(-5px)
+      transform translateX(-5px)
     
     100% 
-      transform: translateX(5px)
+      transform translateX(5px)
     
 .tumbs
     overflow hidden
@@ -217,3 +227,4 @@ h2,h3,h4,h5,ul,body,html
             width 100%
         &:nth-child(odd)
             margin-right 4%
+        ;

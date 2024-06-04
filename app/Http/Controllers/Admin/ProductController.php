@@ -24,7 +24,7 @@ class ProductController extends Controller
         $this->middleware('isadmin');
     }
     public function getHome(){
-        $products = Product::with(['cat'])->orderBy('id', 'desc')->paginate(25);
+        $products = Product::with(['cat'])->orderBy('id', 'desc')->paginate(5);
         $data = ['products'=> $products];
         return view('admin.products.home', $data);
     }
@@ -136,6 +136,9 @@ class ProductController extends Controller
             return back()->withErrors($validator)->with('message','Se ha producido un error')->with('typealert','danger')->withInput();
         else:
             $product = Product::findOrFail($id);
+            $imgpreview_path = $product ->file_path;
+            $imgpreview = $product->image;
+
             // Solo se ve en la BD 0=BD y 1=Web
             $product->status = $request->input('status');
             $product->name = e($request->input('name'));
@@ -172,7 +175,9 @@ class ProductController extends Controller
                         $constraint->upsize();
                     });
                     $img->save($upload_path. '/'. $path.'/t_'.$filename);
-
+                    // Elimina la imgen destacada del disco
+                    unlink($upload_path.'/'.$imgpreview_path.'/'.$imgpreview);
+                    unlink($upload_path.'/'.$imgpreview_path.'/t_'.$imgpreview);
                 endif;
                 return back()->with('message','Producto actualizado con exito')->with('typealert','success') ;
             endif;

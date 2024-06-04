@@ -20,19 +20,21 @@
     <div class="main">
         <ul>
             <li>
-                <a href="{{url('/admin')}}" > <i class="fa-solid fa-house-user"></i> Dasboard </a>
+                <a href="{{url('/admin')}}" class="lk-dashboard"> <i class="fa-solid fa-house-user"></i> Dashboard </a>
             </li>
             
             <li>
-                <a href="{{url('/admin/products')}}"> <i class="fa-solid fa-store"></i>Productos</a>
+                <a href="{{url('/admin/products')}}" class="lk-products lk-product_add lk-product_edit lk-product_gallery_add" > <i class="fa-solid fa-store"></i>Productos</a>
             </li>
 
             <li>
-                <a href="{{url('/admin/categories/0')}}"> <i class="fa-regular fa-folder"></i>  Categorias</a>
+                <a href="{{url('/admin/categories/0')}}" class="lk-categories lk-category_add lk-category_edit lk-category_delete" >
+                     <i class="fa-regular fa-folder"></i>  Categorias
+                </a>
             </li>
 
             <li>
-                <a href="{{url('/admin/users')}}"><i class="fa-solid fa-users-line"></i>Usuarios</a>
+                <a href="{{url('/admin/users')}}" class="lk-user_list"><i class="fa-solid fa-users-line"></i>Usuarios</a>
             </li>
         </ul>
     </div>

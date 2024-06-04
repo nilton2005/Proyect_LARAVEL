@@ -25,21 +25,21 @@
                 <a href="{{url('admin/product/add')}}" class="btn btn-primary"
         style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .90rem;color:#c30010; background-color: #ffcbd1;border-color:#ffcbd1;" ><i class="fa-solid fa-plus"></i>Agregar Productos</a>
             </div>
-            <table class="table table-striped ">
+            <table class=" table table-responsive-lg table-striped ">
                 <thead>
                     <tr>
-                        <td>ID</td>
-                        <td>Imagen</td>
-                        <td>Nombre</td>
-                        <td>Categoria</td>
-                        <td>Precio</td>
-                        <td></td>
+                        <th>ID</th>
+                        <th>Imagen</th>
+                        <th>Nombre</th>
+                        <th>Categoria</th>
+                        <th>Precio</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($products as $p)
-                    <tr>
-                        <td>{{$p->id}}</td>
+                    <tr @if($p->status == 0) class="table-danger"  @endif>
+                        <th>{{$p->id}}</th>
                         <td >
                             <a href="{{url('/uploads/'.$p->file_path.'/'.$p->image)}}" data-fancybox data-caption ="Single image">
 
@@ -51,7 +51,7 @@
                                         });
                                 });
                             </script>
-                        </td>
+                    </td>
                         <td>{{$p->name}}</td>
                         <td>{{ $p->cat ? $p->cat->name : 'No category' }}</td>
                         <td>{{$p->price}}</td>
@@ -63,6 +63,9 @@
                         </td>
                     </tr>
                     @endforeach
+                    <tr>
+                        <td colspan="6">{{$products->render()}}</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
