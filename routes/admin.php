@@ -5,7 +5,7 @@ Route::prefix('/admin')->group(function(){
     Route :: get('/', 'Admin\DashboardController@getDashboard')->name('dashboard');
     // Module users
     
-    Route::get('/users', 'Admin\UserController@getUsers')->name('user_list');
+    Route::get('/users/{status}', 'Admin\UserController@getUsers')->name('user_list');
     Route::get('/user/{id}/edit', 'Admin\UserController@getUseredit')->name('user_edit');
 
 

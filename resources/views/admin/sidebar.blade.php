@@ -34,7 +34,7 @@
             </li>
 
             <li>
-                <a href="{{url('/admin/users')}}" class="lk-user_list lk-user_edit"><i class="fa-solid fa-users-line"></i>Usuarios</a>
+                <a href="{{url('/admin/users/all')}}" class="lk-user_list lk-user_edit"><i class="fa-solid fa-users-line"></i>Usuarios</a>
             </li>
         </ul>
     </div>
