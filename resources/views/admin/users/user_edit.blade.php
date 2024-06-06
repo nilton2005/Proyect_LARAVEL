@@ -33,13 +33,17 @@
                             <span  class="Title"   >Fecha de registro</span>
                             <span  class="text"   >{{$u->created_at}}</span>
                             <span  class="Title"  >Rol del usuario:</span>
-                            <span class="text"> {{ getRoleUserArrayKey($u->id) }} </span>
-
+                            <span class="text"> {{ getRoleUserArray(null, $u->role) }} </span>
                             <span class="Title" > Estado del usuario</span> 
                             <span class="text">
-                                {{ getUserStatusArrayKey($u->id)}}
+                                {{ getUserStatusArray(null,$u->status)}}
                             </span>
                         </div>
+                        @if($u->status == "100")
+                            <a href="{{url('/admin/user/'.$u->id.'/banned')}}" class="btn btn-success" >Activar usuario</a>
+                        @else
+                            <a href="{{url('/admin/user/'.$u->id.'/banned')}}" class="btn btn-outline-danger" >Suspender usuario</a>
+                        @endif
                     </div>
                 </div>
             </dib>

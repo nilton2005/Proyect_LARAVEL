@@ -27,4 +27,19 @@ class UserController extends Controller
         $data = ['u'=>$u];
         return view('admin.users.user_edit',$data);
     }
+
+
+    public function getUserBanned($id){
+        $u = User::findOrFail($id);
+        if($u->status == "100"):
+            $u->status = "1";
+            $msg = "Usario Activado";
+        else:
+            $u->status = "100";
+            $msg = "Usuarios Baneado";
+        endif;
+            if($u->save()):
+                return back()->with('message', $msg)->with('typealert','success');
+            endif;
+    }
 }

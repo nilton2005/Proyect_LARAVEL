@@ -9,18 +9,23 @@ function getModulesArray(){
 
     return $a;
 }
-function getRoleUserArrayKey($id){
+function getRoleUserArray($mode, $id){
     $roles = ['0'=> 'Usuario normal', '1'=>'Administrador'];
-    if (array_key_exists($id, $roles)) {
+    if(!is_null($mode)):
+        return $roles;
+    else:
         return $roles[$id];
-    } else {
-        return 'Clave no válida';
-    }
+    endif;
+
 }
 
 
-function getUserStatusArrayKey($id){
+function getUserStatusArray($mode,$id){
     $status = ['0'=>'Registrado', '1'=>'Verficado', '100'=>'Baneado'];
-    return $status[$id];
+    if(!is_null($mode)):
+        return $status;
+    else:
+        return $status[$id];
+    endif;
 
 }
