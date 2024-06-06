@@ -106,4 +106,43 @@ class ConnectController extends Controller
         
             
     }
+
+
+    // Recuperarar cuenta
+
+    public function getRecover(){
+        return view('connect.recover');
+    }
+    public function postRecover(Request $request){
+        $rules = [
+            'email' =>'required|email',
+            
+        ];
+
+        //mensajes de error
+        $messages = [
+            
+            'email.required' => 'El email es obligatorio.',
+            'email.email' => 'Asegurese de poner xxx@gmail.com.',
+        ];
+
+        $validator = Validator :: make($request->all(), $rules, $messages);
+        if($validator->fails()):
+            return back()->withErrors($validator)->with('message','Se ha producido un error')->with('typealert','danger');
+        else:
+            $user = User::where('email',$request->input('email'))->count();
+            if($user == "1"):
+                $user = User::where('email',$request->input('email'))->first();
+                $code = rand(100000,9999);
+                $data = ['name'=>$user->name, 'email'=>$user->email, 'code'=>$code];
+                return view('emails.user_password_recover',$data);
+
+            else:
+                return back()->with('message','El usuario no existe')->with('typealert','danger');
+
+            endif;
+            
+        endif;
+
+    }
 }
