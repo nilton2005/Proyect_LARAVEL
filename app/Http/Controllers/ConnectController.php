@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator,Illuminate\Support\Facades\Hash;
+use App\Mail\UserSendRecover;
 use Illuminate\Support\Facades\Auth;
 use App\User;
-
+use Illuminate\Support\Facades\Mail;
 
 class ConnectController extends Controller
 {
@@ -135,8 +136,13 @@ class ConnectController extends Controller
                 $user = User::where('email',$request->input('email'))->first();
                 $code = rand(100000,9999);
                 $data = ['name'=>$user->name, 'email'=>$user->email, 'code'=>$code];
-                return view('emails.user_password_recover',$data);
-
+                // Comparando token 
+                $u = User::find($user->id);
+                $u->password_code = $code;
+                if($u->save()):
+                Mail::to($user->email)->send(new UserSendRecover($data));
+                return redirect('/reset?email='.$user->email)->with('message','Enviamos un token a su correo')->with('typealert','success');
+                endif;
             else:
                 return back()->with('message','El usuario no existe')->with('typealert','danger');
 
@@ -144,5 +150,9 @@ class ConnectController extends Controller
             
         endif;
 
+    }
+    public function getReset(Request $request){
+        $data = ['email' => $request->get('email')];
+        return view('connect.reset',$data);
     }
 }
