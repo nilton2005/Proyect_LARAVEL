@@ -33,7 +33,7 @@ class UserController extends Controller
     public function getUserBanned($id){
         $u = User::findOrFail($id);
         if($u->status == "100"):
-            $u->status = "1";
+            $u->status = "0";
             $msg = "Usario Activado";
         else:
             $u->status = "100";
@@ -42,5 +42,12 @@ class UserController extends Controller
             if($u->save()):
                 return back()->with('message', $msg)->with('typealert','success');
             endif;
+    }
+
+
+    public function getUserPermissions(Request $request, $id){
+        $u = User::findOrFail($id);
+        $data = ['u'=>$u];
+        return view('admin.users.user_permissions', $data);
     }
 }

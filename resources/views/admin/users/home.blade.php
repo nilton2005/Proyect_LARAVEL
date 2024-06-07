@@ -61,7 +61,11 @@
 
                         <td>
                             <div class="opts">
-                                <a href="{{url('/admin/user/'.$user->id.'/edit')}}" class="edit" title="Editar"><i class="fas fa-edit"></i></a>
+                                <a href="{{url('/admin/user/'.$user->id.'/edit')}}" class="edit" data-placement="top" title="Editar"><i class="fas fa-edit"></i>
+                                </a>
+                                <a href="{{url('/admin/user/'.$user->id.'/permissions')}}" class="edit" data-placement="top" title="permisos de usuarios"><i class="fa-solid fa-unlock-keyhole"></i>
+                                </a>
+
                                 {{--
                                 <a href="{{url('/admin/users/'.$user->id.'/delete')}}" class="delete" title="Eliminar"><i class="fas fa-trash"></i></a>
                                 --}}
