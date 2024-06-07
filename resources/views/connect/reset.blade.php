@@ -9,7 +9,7 @@
         </a>
     </dicv>
     <div class="inside">
-    {!!Form:: open(['url'=> '/recover'])!!}
+    {!!Form:: open(['url'=> '/reset'])!!}
     <label for="email" >Correo Electrónico</label>
     <div class="input-group">
         <div class="input-group-text"><i class="fa-regular fa-envelope"></i> 

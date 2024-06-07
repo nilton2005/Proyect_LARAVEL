@@ -5,9 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator,Illuminate\Support\Facades\Hash;
 use App\Mail\UserSendRecover;
+use App\Mail\UserSendNewPassword;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
+
+
 
 class ConnectController extends Controller
 {
@@ -140,8 +144,8 @@ class ConnectController extends Controller
                 $u = User::find($user->id);
                 $u->password_code = $code;
                 if($u->save()):
-                Mail::to($user->email)->send(new UserSendRecover($data));
-                return redirect('/reset?email='.$user->email)->with('message','Enviamos un token a su correo')->with('typealert','success');
+                    Mail::to($user->email)->send(new UserSendRecover($data));
+                    return redirect('/reset?email='.$user->email)->with('message','Enviamos un token a su correo')->with('typealert','success');
                 endif;
             else:
                 return back()->with('message','El usuario no existe')->with('typealert','danger');
@@ -154,5 +158,38 @@ class ConnectController extends Controller
     public function getReset(Request $request){
         $data = ['email' => $request->get('email')];
         return view('connect.reset',$data);
+    }
+    public function postReset(Request $request){
+        $rules = [
+            'email' =>'required|email',
+            'code' => 'required'
+        ];
+        //mensajes de error
+        $messages = [
+            'email.required' => 'El email es obligatorio.',
+            'email.email' => 'Asegurese del formato de su correo',
+            'code.required' => 'Deve ingresar el codigo que le enviamos'
+        ];
+        $validator = Validator :: make($request->all(), $rules, $messages);
+        if($validator->fails()):
+            return back()->withErrors($validator)->with('message','Se ha producido un error')->with('typealert','danger');
+        else:
+            $user = User::where('email',$request->input('email'))->where('password_code',$request->input('code'))->first();
+            if($user):
+                $new_password = Str::random(8);
+                $user->password = Hash::make($new_password);
+                $user->password_code = null;
+
+                if($user->save()):
+                    $data = ['name'=>$user->name, 'password'=>$new_password];
+                    Mail::to($user->email)->send(new UserSendNewPassword($data));
+                    return redirect('/login')->with('message', 'Enviamos la nueva contraseña a su correo')->with('typealert','success');
+                endif;
+
+
+            else:
+                return back()->with('message','El correo no existe o el código es incorrecto')->with('typealert','danger');
+            endif;
+        endif;
     }
 }
