@@ -1,6 +1,6 @@
 
 @extends('admin.master')
-@section('title', 'Editar usuario')
+@section('title', 'Permiso usuario')
 
 @section('breadcrumb')
 <li class="breadcrumb-item">

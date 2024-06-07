@@ -9,6 +9,11 @@ Route::prefix('/admin')->group(function(){
     Route::get('/user/{id}/edit', 'Admin\UserController@getUserEdit')->name('user_edit');
     Route::get('/user/{id}/banned', 'Admin\UserController@getUserBanned')->name('user_banned');
     Route::get('/user/{id}/permissions', 'Admin\UserController@getUserPermissions')->name('user_permissions');
+    Route::post('/user/{id}/permissions', 'Admin\UserController@postUserPermissions')->name('user_permissions');
+
+
+
+
 
     // Module Products
     Route::get('/products','Admin\ProductController@getHome')->name('products');
