@@ -1,4 +1,4 @@
-<dib class="col-md-4">
+<dib class="col-md-4 d-flex">
     <div class="panel shadow">
         <div class="header">
             <h2 class="title"> <i class="fa-solid fa-house-user"></i> Modulo Dashboard </h2>

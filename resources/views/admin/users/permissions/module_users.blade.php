@@ -1,5 +1,5 @@
 
-<dib class="col-md-4">
+<dib class="col-md-4 d-flex">
     <div class="panel shadow">
         <div class="header">
             <h2 class="title "><i class="fa-solid fa-users-line"></i>Modulo Usuarios</a> </h2>
@@ -21,5 +21,6 @@
                 <input type="checkbox" value="true" name='user_permissions' @if(kvfj($u->permissions, 'user_permissions')): checked @endif; >
                 <label for="user_permissions">Acceso a los permisos de usuarios</label>
             </div> 
+        </div>
     </div>
 </dib>

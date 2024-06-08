@@ -1,5 +1,5 @@
 
-<dib class="col-md-4">
+<dib class="col-md-4 d-flex">
     <div class="panel shadow">
         <div class="header">
             <h2 class="title"> <i class="fa-solid fa-store"></i>Modulo Productos </h2>

@@ -41,9 +41,10 @@
                         {!!Form::text('icon',null,['class'=>'form-control'])!!}
                     </div>
 
-
-                    {!!Form::submit('Guardar', ['class'=>'btn btn-success mtop16'])!!}
-                    {!!Form::close()!!}
+                    @if(kvfj(Auth::user()->permissions, 'product_gallery_delete'))
+                        {!!Form::submit('Guardar', ['class'=>'btn btn-success mtop16'])!!}
+                        {!!Form::close()!!}
+                    @endif;
        
                 </div>
             </div>
@@ -76,9 +77,12 @@
                                 <td>{{$cat->name}}</td>
                                 <td>
                                     <div class="opts">
-                                       
-                                            <a href="{{url('/admin/category/'.$cat->id.'/edit')}}" class="edit" title="Editar" data-placement = "top" data-toggle= "tooltip"><i class="fas fa-edit"></i></a>
-                                            <a href="{{url('/admin/category/'.$cat->id.'/delete')}}" class="delete" title="Eliminar"><i class="fas fa-trash"></i></a>
+                                            @if(kvfj(Auth::user()->permissions, 'category_edit'))
+                                                <a href="{{url('/admin/category/'.$cat->id.'/edit')}}" class="edit" title="Editar" data-placement = "top" data-toggle= "tooltip"><i class="fas fa-edit"></i></a>
+                                            @endif
+                                            @if(kvfj(Auth::user()->permissions, 'category_delete'))
+                                                <a href="{{url('/admin/category/'.$cat->id.'/delete')}}" class="delete" title="Eliminar"><i class="fas fa-trash"></i></a>
+                                            @endif
                                        
                                     </div>
                                 </td>

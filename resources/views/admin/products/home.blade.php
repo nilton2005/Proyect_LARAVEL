@@ -21,10 +21,13 @@
 
         </div>
         <div class="inside">
+            @if(kvfj(Auth::user()->permissions, 'product_add'))
+
             <div class="btns">
                 <a href="{{url('admin/product/add')}}" class="btn btn-primary"
         style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .90rem;color:#c30010; background-color: #ffcbd1;border-color:#ffcbd1;" ><i class="fa-solid fa-plus"></i>Agregar Productos</a>
             </div>
+            @endif
             <table class=" table table-responsive-lg table-striped ">
                 <thead>
                     <tr>
@@ -56,10 +59,18 @@
                         <td>{{ $p->cat ? $p->cat->name : 'No category' }}</td>
                         <td>{{$p->price}}</td>
                         <td>
+                           
+
                             <div class="opts">  
-                                <a href="{{url('/admin/product/'.$p->id.'/edit')}}" class="edit" title="Editar" data-placement = "top" data-toggle= "tooltip"><i class="fas fa-edit"></i></a>
-                                <a href="{{url('/admin/product/'.$p->id.'/delete')}}" class="delete" title="Eliminar"><i class="fas fa-trash"></i></a>
+                                 @if(kvfj(Auth::user()->permissions, 'product_edit'))
+                                    <a href="{{url('/admin/product/'.$p->id.'/edit')}}" class="edit" title="Editar" data-placement = "top" data-toggle= "tooltip"><i class="fas fa-edit"></i></a>
+                                @endif
+                                @if(kvfj(Auth::user()->permissions, 'product_delete'))
+
+                                    <a href="{{url('/admin/product/'.$p->id.'/delete')}}" class="delete" title="Eliminar"><i class="fas fa-trash"></i></a>
+                                @endif
                             </div>
+                          
                         </td>
                     </tr>
                     @endforeach

@@ -122,14 +122,19 @@
                         {{Form::open(['url'=> 'admin/product/'.$p->id.'/gallery/add', 'files'=>true, 'id'=>'form_product_gallery'])}}
                         {!!Form::file('file_image',['id'=>'product_file_image','accept'=>'image/*', 'style'=>'display:none;', 'required'])!!}
                         {!!Form::close()!!}
+                        {{--Permisos de usuario--}}
+                        @if(kvfj(Auth::user()->permissions, 'product_gallery_add'))
                         <div class="btn-submit">
                             <a href="#" id="btn_product_file_image"><i class="fa-solid fa-plus"></i></a>
                         </div>
+                        @endif
                         <div class="tumbs">
                             @foreach($p->getGallery as $img)
                             <div class="tumb">
+                                @if(kvfj(Auth::user()->permissions, 'product_gallery_delete'))
                                 <a href="{{url('/admin/product/'.$p->id.'/gallery/'.$img->id.'/delete')}}" data-togglle = "tooltip" data-placement= 'top' title= 'Eliminar'><i class="fas fa-trash"></i>
                                 </a>
+                                @endif
                                 <img src="{{url('/uploads/'.$img->file_path.'/t_'.$img->file_name)}}" alt=" imagenes del producto">
                             </div>
                             @endforeach
