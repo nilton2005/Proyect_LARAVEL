@@ -41,10 +41,10 @@
                         {!!Form::text('icon',null,['class'=>'form-control'])!!}
                     </div>
 
-                    @if(kvfj(Auth::user()->permissions, 'product_gallery_delete'))
+                    @if(kvfj(Auth::user()->permissions, 'category_add'))
                         {!!Form::submit('Guardar', ['class'=>'btn btn-success mtop16'])!!}
                         {!!Form::close()!!}
-                    @endif;
+                    @endif
        
                 </div>
             </div>

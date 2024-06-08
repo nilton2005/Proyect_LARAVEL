@@ -11,6 +11,7 @@ class DashboardController extends Controller
         //verificamo si el usuario esta conectado 
         $this->middleware('auth');
         $this->middleware('user.status');
+        $this->middleware('user.permissions');
         $this->middleware('isadmin');
     }
 
