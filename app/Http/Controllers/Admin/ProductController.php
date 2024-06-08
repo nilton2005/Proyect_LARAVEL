@@ -21,7 +21,8 @@ class ProductController extends Controller
     //
     public function __construct(){
         $this->middleware('auth');
-        $this->middleware('user.status');        $this->middleware('user.permissions');
+        $this->middleware('user.status');        
+        $this->middleware('user.permissions');
         $this->middleware('isadmin');
     }
     public function getHome(){
@@ -42,6 +43,8 @@ class ProductController extends Controller
             'name' =>'required',
             'price' =>'required|numeric',
             'img' =>'required',//'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'code'=>'required',
+            'inventory'=>'required',
             'content' =>'required',
            
         ];
@@ -50,6 +53,8 @@ class ProductController extends Controller
             'price.required'=>'El precio del producto es obligatorio',
             'price.numeric'=>'El precio del producto debe ser un numero',
             'img.required'=>'La imagen del producto es obligatoria',
+            'code.required' => 'El código del producto es imortante',
+            'inventory.required'=>'El inventario es importante',
             //'img.image'=>'La imagen debe ser una imagen',
             //'img.mimes'=>'La imagen debe ser formato jpeg,png,jpg,gif,svg',
             //'img.max'=>'La imagen debe pesar menos de 2048 kilobytes',
@@ -81,12 +86,14 @@ class ProductController extends Controller
             $product = new Product;
             // Solo se ve en la BD 0=BD y 1=Web
             $product->status = '0';
+            $product->code = e($request->input('code'));
             $product->name = e($request->input('name'));
             $product->slug = Str::slug($request->input('name'));
             $product->category_ID = $request->input('category');
             $product->file_path = date('Y-m-d');
             $product->image = $filename ;
             $product->price = e($request->input('price'));
+            $product->inventory = e($request->input('inventory'));
             $product->in_discount = e($request->input('indiscount'));
             $product->discount = e($request->input('discount'));
             $product->content = e($request->input('content'));
@@ -165,6 +172,8 @@ class ProductController extends Controller
             $product->price = e($request->input('price'));
             $product->in_discount = e($request->input('indiscount'));
             $product->discount = e($request->input('discount'));
+            $product->inventory = e($request->input('inventory'));
+            $product->code = e($request->input('code'));
             $product->content = e($request->input('content'));
             if($product->save()):                
                 // Guardar imagen con los nomber en uploads

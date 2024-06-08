@@ -51,7 +51,7 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row mtop16">
 
                 {{--columna para la precio--}}
                 <div class="col-md-3">
@@ -80,8 +80,27 @@
                     </div>
                 </div>
             </div>
+            {{--New spaces for products --}}
+            <div class="row mtop16">
+                <div class="col-md-3">
+                    <label for="inventory">Invetario: </label>
+                    <div class="input-group">
+                        <span class="input-group-text" id="basic-addon1"><i class="fa-regular fa-pen-to-square"></i></span>
+                        {!!Form::number('inventory', 0, ['class'=>'form-control'])!!}
+                    </div>
+                </div>
+           
+                <div class="col-md-3">
+                    <label for="code">Código de producto: </label>
+                    <div class="input-group">
+                        <span class="input-group-text" id="basic-addon1"><i class="fa-regular fa-pen-to-square"></i></span>
+                            {!!Form::text('code', 0, ['class'=>'form-control'])!!}
+                    </div>
+                </div>
 
-            <div class="row ">
+            </div>
+
+            <div class="row mtop16 ">
                 <div class="col-md-12">
                     <label for="content">Descripción:</label>
                     {!!Form::textarea('content',null,['class'=>'form-control mtop16','id'=>'editor'])!!}
