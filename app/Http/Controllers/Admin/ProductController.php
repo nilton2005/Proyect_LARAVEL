@@ -25,8 +25,23 @@ class ProductController extends Controller
         $this->middleware('user.permissions');
         $this->middleware('isadmin');
     }
-    public function getHome(){
-        $products = Product::with(['cat'])->orderBy('id', 'desc')->paginate(5);
+    public function getHome($status){
+        switch ($status){
+            case '0':
+                $products = Product::with(['cat'])->where('status',0)  ->orderBy('id', 'desc')->paginate(5);  
+                break;
+            case '1':
+                $products = Product::with(['cat'])->where('status',1)  ->orderBy('id', 'desc')->paginate(5);
+                break;
+            case 'all':
+                $products = Product::with(['cat'])->orderBy('id', 'desc')->paginate(5);
+                break;
+            case 'trash':
+                $products = Product::with(['cat'])->onlyTrashed()->orderBy('id', 'desc')->paginate(5);  
+                break;
+        }
+        
+        
         $data = ['products'=> $products];
         return view('admin.products.home', $data);
     }
@@ -268,6 +283,36 @@ function getProductGalleryDelete($id, $gid){
         endif;
     }
 
+}
+
+public function postProductSearch(Request $request){
+    $rules = [
+        'search' =>'required',
+  
+       
+    ];
+    $messages = [
+        'search.required'=>'Deve ingresar una consulta',
+
+    ];
+
+    $validator = Validator::make($request->all(), $rules, $messages);
+    if($validator->fails()):
+        return back()->withErrors($validator)->with('message','Se ha producido un error')->with('typealert','danger')->withInput();
+    else:
+        switch($request->input('filter')):
+            case '0':
+                $products = Product::with(['cat'])->where('name', 'LIKE', '%'.$request->input('search'))->orderBy('id','desc')->get(); 
+                break; 
+            case '1':
+                $products = Product::with(['cat'])->where('code'.$request->input('search'))->orderBy('id','desc')->get(); 
+                break;
+            endswitch;
+
+            $data = ['products'=> $products];
+            return view('admin.products.search', $data);
+
+    endif;
 }
 
 }

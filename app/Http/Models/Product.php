@@ -13,7 +13,7 @@ class Product extends Model
     protected $table = 'products';
     protected $hidden = ['created_at', 'updated_at'];
 
-    // acceso a la categoia asocianda del producto 
+    // acceso a la categoia asociada del producto 
     public function cat(){
         return $this->belongsTo(Category::class, 'category_ID');
     }

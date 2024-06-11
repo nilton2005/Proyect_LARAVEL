@@ -60,6 +60,7 @@ class UserController extends Controller
             'products'=> $request->input('products'),
             'product_add'=> $request->input('product_add'),
             'product_edit'=> $request->input('product_edit'),
+            'product_search'=> $request->input('product_search'),
             'product_delete'=> $request->input('product_delete'),
             'product_gallery_add'=> $request->input('product_gallery_add'),
             'product_gallery_delete'=> $request->input('product_gallery_delete'),

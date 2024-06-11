@@ -111,9 +111,6 @@
                         </td>
                     </tr>
                     @endforeach
-                    <tr>
-                        <td colspan="6">{{$products->render()}}</td>
-                    </tr>
                 </tbody>
             </table>
         </div>

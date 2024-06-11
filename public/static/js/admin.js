@@ -5,6 +5,19 @@ var route = document.getElementsByName('routName')[0].getAttribute('content');
 
 // Document ready event listener
 document.addEventListener('DOMContentLoaded', function() {
+    // activacion de la barra de busqueda
+    var btn_search = document.getElementById('btn_search');
+    var form_search = document.getElementById('form_search');
+    if(btn_search){
+        btn_search.addEventListener('click', function(e){
+            e.preventDefault();
+            if(form_search.style.display === 'block'){
+                form_search.style.display = 'none';
+            }else{
+                form_search.style.display = 'block'
+            }
+        });
+    }
 
     // Comprobar si la ruta actual es la ruta de edición del producto
     if (route == "product_edit") {

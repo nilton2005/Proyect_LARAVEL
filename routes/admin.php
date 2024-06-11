@@ -16,10 +16,11 @@ Route::prefix('/admin')->group(function(){
 
 
     // Module Products
-    Route::get('/products','Admin\ProductController@getHome')->name('products');
+    Route::get('/products/{status}','Admin\ProductController@getHome')->name('products');
     Route::get('/product/add','Admin\ProductController@getProductAdd')->name('product_add');
     Route::get('/product/{id}/edit','Admin\ProductController@getProductEdit')->name('product_edit');
     Route::post('/product/add', 'Admin\ProductController@postProductAdd')->name('product_add');
+    Route::post('/product/search','Admin\ProductController@postProductSearch')->name('product_search');
     Route::post('/product/{id}/edit', 'Admin\ProductController@postProductEdit')->name('product_add');
     Route::post('/product/{id}/gallery/add', 'Admin\ProductController@postProductGalleryAdd')->name('product_gallery_add');
     Route::get('/product/{id}/gallery/{gid}/delete', 'Admin\ProductController@getProductGalleryDelete')->name('product_gallery_delete');

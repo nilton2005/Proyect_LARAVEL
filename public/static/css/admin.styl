@@ -145,6 +145,45 @@ h2,h3,h4,h5,ul,body,html
                 color #19213d
                 font-size 1.1em
                 padding 11px 15px
+            ul
+                display inline-block
+                float right
+                margin-right 12px
+               
+                li
+                    display inline-block 
+                    position relative
+                    
+                    a   
+                        color #333
+                        display inline-block
+                        padding 8px
+                        text-decoration none
+                        &:hover
+                            background-color #f5f5f5
+                            color #222
+                        i
+                            color red
+                    ul
+                        background-color #fff
+                        border 1px solid #f1f1f1
+                        display none
+                        float none
+                        position absolute
+                        width 180px
+                        li 
+                            display inline-block
+                            border-buttom 1px solid #fff
+                            width 100%
+                            &:last-child
+                                border-bottom 0px
+                            a
+                                display inline-block
+                                width 180px
+                    &:hover
+                        ul
+                            display block
+
         .inside
             padding 14px 
             .nav
@@ -160,6 +199,12 @@ h2,h3,h4,h5,ul,body,html
                             box-shadow 0 0.5rem 1rem #f3c7db
                             color #ffff !important
                             text-decoration none
+            .form_search
+                display none
+                margin-bottom 16px
+                .btn
+                    width 100%
+
 .opts
     a
         display inline-block
