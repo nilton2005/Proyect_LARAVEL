@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
+use Symfony\Contracts\Service\Attribute\Required;
 
 class UserController extends Controller
 {
@@ -27,6 +28,31 @@ class UserController extends Controller
         $u = User::findOrFail($id);
         $data = ['u'=>$u];
         return view('admin.users.user_edit',$data);
+    }
+
+    public function postUserEdit(Request $request, $id){
+        $u = User::findOrFail($id);
+        $u->role = $request->input('user_type');
+        if($request->input('user_type')=="1"):
+            if(is_null($u->permissions)):
+                $permissions = [
+                    'dashboard'=>true
+                ];
+                $permissions = json_encode($permissions);
+                $u->permissions = $permissions;
+            endif;
+        else:
+            $u->permisssions = null;
+        endif;
+            if($u->save()):
+                if($request->input('user_type') == 1):
+                    return redirect('/admin/user/'.$u->id.'/permissions')->with('message', 'El rango del usuario se actualizo con exito')->with('typealert', 'success');
+                else:
+               
+                    return back()->with('message', 'El rango del usuario se actualizo con exito')->with('typealert', 'success');
+                endif;
+            endif;
+
     }
 
 
