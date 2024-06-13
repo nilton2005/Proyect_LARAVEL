@@ -10,14 +10,19 @@ use Illuminate\Support\Facades\Validator;
 use App\Http\Models\Product;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Collection;
 //importa la clase de validación
 
 
 //importan la clase Image
 use Intervention\Image\ImageManagerStatic as Image;
+use Symfony\Component\CssSelector\Node\FunctionNode;
+
 //importa la clase de validación
 class ProductController extends Controller
 {
+    use SoftDeletes;
     //
     public function __construct(){
         $this->middleware('auth');
@@ -314,5 +319,22 @@ public function postProductSearch(Request $request){
 
     endif;
 }
+
+public function getProductDelete($id){
+    $p = Product::findOrFail($id);
+    if($p->delete()):
+        return back()->with('message',"Se borró el producto")->with('typealert','success');
+    endif;
+}
+
+public Function getProductRestore($id){
+
+    $p = Product::onlyTrashed()
+            ->where('id',$id)
+            ->first();
+    $p->restore();
+    return redirect('/admin/product/'.$p->id.'/edit')->with('message','el prouducto se restauro con exito')->with('typealert','success');
+    }
+
 
 }

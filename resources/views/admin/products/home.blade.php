@@ -103,8 +103,11 @@
                                     <a href="{{url('/admin/product/'.$p->id.'/edit')}}" class="edit" title="Editar" data-placement = "top" data-toggle= "tooltip"><i class="fas fa-edit"></i></a>
                                 @endif
                                 @if(kvfj(Auth::user()->permissions, 'product_delete'))
-
-                                    <a href="{{url('/admin/product/'.$p->id.'/delete')}}" class="delete" title="Eliminar"><i class="fas fa-trash"></i></a>
+                                    @if($p->deleted_at == null)
+                                        <a href="#" data-path="admin/product" data-action="delete" data-object="{{$p->id}}"  class="btn-deleted" title="Eliminar"><i class="fas fa-trash"></i></a>
+                                    @else
+                                    <a href="#" data-path="admin/product" data-action="restore" data-object="{{$p->id}}"  class="btn-deleted" title="Restore"> <i class="fa-solid fa-trash-can-arrow-up"></i>  </a>
+                                    @endif
                                 @endif
                             </div>
                           

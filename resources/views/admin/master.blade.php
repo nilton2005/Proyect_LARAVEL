@@ -29,6 +29,8 @@
 
   <script src="https://cdn.ckeditor.com/4.22.0/standard/ckeditor.js"></script> 
     <script src="{{url('/static/js/admin.js?v='.time())}}"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 
     <link rel="stylesheet" href="{{url('/static/css/admin.css?v='.time())}}">
 

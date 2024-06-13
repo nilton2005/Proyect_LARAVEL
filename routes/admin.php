@@ -20,10 +20,15 @@ Route::prefix('/admin')->group(function(){
     Route::get('/product/add','Admin\ProductController@getProductAdd')->name('product_add');
     Route::get('/product/{id}/edit','Admin\ProductController@getProductEdit')->name('product_edit');
     Route::post('/product/add', 'Admin\ProductController@postProductAdd')->name('product_add');
+    Route::get('/product/{id}/delete','Admin\ProductController@getProductDelete')->name('product_delete');
+    Route::get('/product/{id}/restore','Admin\ProductController@getProductRestore')->name('product_delete');
+
     Route::post('/product/search','Admin\ProductController@postProductSearch')->name('product_search');
     Route::post('/product/{id}/edit', 'Admin\ProductController@postProductEdit')->name('product_add');
     Route::post('/product/{id}/gallery/add', 'Admin\ProductController@postProductGalleryAdd')->name('product_gallery_add');
     Route::get('/product/{id}/gallery/{gid}/delete', 'Admin\ProductController@getProductGalleryDelete')->name('product_gallery_delete');
+
+
 
     // Module Categories
     Route::get('/categories/{module}', 'Admin\CategoriesController@getHome')->name('categories');
