@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\User;
+use App\Http\Models\Product;
 
 class DashboardController extends Controller
 {
@@ -16,6 +18,9 @@ class DashboardController extends Controller
     }
 
     public function getDashboard(){
-        return view('admin.dashboard');
+        $users = User::count();
+        $products = Product::where('status', '1')->count();
+        $data = ['users'=>$users, 'products' => $products];
+        return view('admin.dashboard',$data);
     }
 }

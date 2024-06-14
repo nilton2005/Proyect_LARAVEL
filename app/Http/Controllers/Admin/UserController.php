@@ -42,7 +42,7 @@ class UserController extends Controller
                 $u->permissions = $permissions;
             endif;
         else:
-            $u->permisssions = null;
+            $u->permissions = null;
         endif;
             if($u->save()):
                 if($request->input('user_type') == 1):
@@ -83,6 +83,8 @@ class UserController extends Controller
 
             // permisos para acceso a productos
             'dashboard'=> $request->input('dashboard'),
+            'dashboard_small_stats'=>$request->input('dashboard_small_stats'),
+            'dashboard_today_sales'=>$request->input('dashboard_today_sales'),
             'products'=> $request->input('products'),
             'product_add'=> $request->input('product_add'),
             'product_edit'=> $request->input('product_edit'),
