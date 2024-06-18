@@ -26,7 +26,6 @@
 
     @section('content')
 
-    sdfasdfasdfa
     @show
 </body>
 </html>

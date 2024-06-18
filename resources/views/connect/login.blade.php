@@ -1,5 +1,5 @@
 @extends('connect.master')
-@section('title', 'TModificado')
+@section('title', 'Login')
 
 @section('content')
 <div class="box  box_login shadow">

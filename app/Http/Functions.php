@@ -1,6 +1,9 @@
 <?php
 
 // key value form json
+
+use App\Http\Middleware\Permissions;
+
 function kvfj($json, $key){
     if($json == null):
         return null;
@@ -47,4 +50,60 @@ function getUserStatusArray($mode,$id){
         return $status[$id];
     endif;
 
+}
+
+// Automatizando permisos de usuarios
+
+
+function user_permissions(){
+    $permiso = [
+        'dashboard'=>[
+            'icon'=>'<i class="fa-solid fa-house-user"></i>',
+            'title'=>'Modulo Dashboard',
+            // Nombre de permisos para / Desciption
+            'permisos' =>[
+                'dashboard' =>'dashboard',
+                'dashboard_small_stats'=>'Acceso estadísticas',
+                'dashboard_today_sales' => 'Acceso ventas del día'
+            ]
+            ],
+        'productos'=>[
+            'icon'=>'<i class="fa-solid fa-store"></i>',
+            'title' => 'Modulo Productos',
+            'permisos' =>[
+                'products'=> 'Acesso a productos',
+                'product_add' => 'Acceso añadir productos',
+                'product_edit' => 'Acceso editar productos',
+                'product_search' => 'Acceso buscar accesorios',
+                'product_delete' => 'Acceso eliminar productos',
+                'product_gallery_add' => 'Acceso añadir imagenes',
+                'product_gallery_delete' => 'Acceso eliminar imagenes'
+            ]
+            ],
+        'catogorias' =>[
+            'icon'=>'<i class="fa-regular fa-folder"></i> ',
+            'title'=>'Modulo Categorias',
+            'permisos' => [
+                'categories' => 'Acceso a categorias',
+                'category_add' => 'Acceso añadir categoria',
+                'category_edit' => 'Acceso editar categoria',
+                'category_delete' => 'Acceso eliminar categoria'
+
+            ]
+            ],
+        'usuarios' =>[
+                'icon'=>'<i class="fa-solid fa-users-line"></i>',
+                'title'=>'Modulo Usuarios',
+                'permisos' => [
+                    'user_list' => 'Acceso a lista de usuarios',
+                    'user_edit' => 'Acceso a editar usuarios',
+                    'user_banned' => 'Acceso a banear usuarios',
+                    'user_permissions' => ' Acceso a todos los permisos de cada usuario'
+    
+                ]
+                ],  
+
+    ];
+
+    return $permiso;
 }

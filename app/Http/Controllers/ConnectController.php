@@ -83,7 +83,7 @@ class ConnectController extends Controller
         ];
 
 
-
+        // Recogo de informacion de usuriario
         $validator = Validator::make($request->all(),$rules, $messages);
         if($validator->fails()):
             return back()->withErrors($validator)->with('message','Se ha producido un error')->with('typealert','danger');

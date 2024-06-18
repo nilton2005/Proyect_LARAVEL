@@ -131,7 +131,7 @@ class ProductController extends Controller
                 //return redirect('admin/products')->with('message','Producto agregado con exito')->with('typealert','success'
 
                 endif;
-                return redirect('admin/products')->with('message','Producto agregado con exito')->with('typealert','success') ;
+                return redirect('admin/products/1')->with('message','Producto agregado con exito')->with('typealert','success') ;
             endif;
         endif;
 
