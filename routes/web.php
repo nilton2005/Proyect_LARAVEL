@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/','contentController@getHome' );
-// Authenticacion de rutas
+// Module Auth
 Route::get('/login', 'ConnectController@getLogin')->name('login');
 Route::post('/login', 'ConnectController@postLogin')->name('login');
 Route::get('/recover', 'ConnectController@getRecover')->name('recover');
@@ -24,4 +24,6 @@ Route::post('/register', 'ConnectController@postRegister')->name('register');
 Route::get('/logout', 'ConnectController@getLogout')->name('logout');
 
 
+// Module  action
 
+Route::get('/account/edit', 'UserController@getAccount')->name('account_edit');

@@ -71,8 +71,19 @@
                             <a href="{{url('/login')}}" class="nav-link btn dropdown-toggle"  role="button" data-bs-toggle="dropdown" aria-expanded="false" > @if(is_null(Auth::user()->avatar)) <img src="{{url('/static/images/default_avatar.png')}}" alt="Avatar del usuarios">@endif Hola : {{Auth::user()->name}}
                             </a>
                             <ul class="dropdown-menu shadow">
-                                    <li><a class="dropdown-item" href=" {{url('/account/edit')}} "><i class="fa-solid fa-user-tie"></i>Mi cuenta</a></li>
-                                    <li><a class="dropdown-item" href="{{url('/logout')}}"><i class="fa-solid fa-arrow-right-from-bracket"></i>Salir</a></li>
+                                @if(Auth::user()->role == "1")
+                                <li>
+                                    <a class="dropdown-item" href=" {{url('/admin')}} "> <i class="fa-solid fa-screwdriver-wrench"></i>  Administración</a>
+                                </li>
+                                <li><hr class="dropdown-divider"></li>
+                           
+                                @endif
+                                    <li>
+                                        <a class="dropdown-item" href=" {{url('/account/edit')}} "><i class="fa-solid fa-user-tie"></i>Mi cuenta</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="{{url('/logout')}}"><i class="fa-solid fa-arrow-right-from-bracket"></i>Salir</a>
+                                    </li>
                             </ul>
                         </li>                 
                     @endif
@@ -101,11 +112,11 @@
         </div>
     </div>
     @endif
-
-    @section('content')
-
-    @show
-
+    <div class="wrapper">
+        <div class="container">
+            @yield('content')
+        </div>
+    </div>
 </body>
 
 </html>

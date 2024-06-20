@@ -5,6 +5,13 @@ body
     background-color #f9f9f9
     font-size 15px
     font-family 'Roboto' , sans-serif
+
+.mtop16
+    margin-top 16px
+.mtop32
+    margin-top 32px
+
+
 nav
     border-bottom 3px solid color1
     .navbar-brand
@@ -62,3 +69,83 @@ nav
             overflow initial
             a
                 border-radius  12px !important
+
+.wrapper
+        .panel
+            background-color #fff
+            border-radius 7px
+            border-bottom 2px solid #ff8478
+            width 100%
+        .header
+            border-bottom 2px solid red
+            h2.title
+                display inline-block
+                font-size 1.1em
+                padding 11px 15px
+                margin-bottom 0px
+            ul
+                display inline-block
+                float right
+                margin-right 12px
+               
+                li
+                    display inline-block 
+                    position relative
+                    
+                    a   
+                        color #333
+                        display inline-block
+                        padding 8px
+                        text-decoration none
+                        &:hover
+                            background-color #f5f5f5
+                            color #222
+                        i
+                            color red
+                    ul
+                        background-color #fff
+                        border 1px solid #f1f1f1
+                        display none
+                        float none
+                        position absolute
+                        width 180px
+                        li 
+                            display inline-block
+                            border-buttom 1px solid #fff
+                            width 100%
+                            &:last-child
+                                border-bottom 0px
+                            a
+                                display inline-block
+                                width 180px
+                    &:hover
+                        ul
+                            display block
+
+        .inside
+            padding 14px 
+            width 100%
+            .nav
+                .nav-link
+                        border 1px solid#ff8478
+                        border-radius 8px
+                        margin-right 8px
+                        color #19213d
+                        font-size 1.1em
+                        padding 11px 15px
+                        &:hover
+                            background-color #ff8478
+                            box-shadow 0 0.5rem 1rem #f3c7db
+                            color #ffff !important
+                            text-decoration none
+            .form_search
+                display none
+                margin-bottom 16px
+                .btn
+                    width 100%
+            // Para el apartado de dashoboard (stats)
+            .big_count
+                display block
+                font-size 2em
+                text-align center
+                width 100%
