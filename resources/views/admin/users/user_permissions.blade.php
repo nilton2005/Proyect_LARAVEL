@@ -41,14 +41,6 @@
                 @endforeach
             </div>
             <div class="row">
-                @include('admin.users.permissions.module_dashboard')
-                @include('admin.users.permissions.module_products')
-                @include('admin.users.permissions.module_categories')
-            </div>
-            <div class="row mtop16">
-                @include('admin.users.permissions.module_users')
-            </div>
-            <div class="row">
                 <div class="col-md-12">
                     <div class="panel shadow">
                         <div class="inside">
