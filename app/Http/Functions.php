@@ -107,3 +107,21 @@ function user_permissions(){
 
     return $permiso;
 }
+
+function getUserYears(){
+    //year day
+    $ya = date('Y');
+    // year min
+    $ym = $ya-18;
+    // year old
+    $yo = $ym - 65;
+    return [$ym,$yo];
+}
+
+
+function getMonths($modo, $key){
+    $m =[
+        '1' => 'Enero',
+        '2' => 'Febrero',
+    ];
+}
