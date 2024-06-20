@@ -68,7 +68,9 @@
                         </li>
                     @else
                           <li class="nav-item link-acc link-user dropdown">
-                            <a href="{{url('/login')}}" class="nav-link btn dropdown-toggle"  role="button" data-bs-toggle="dropdown" aria-expanded="false" > @if(is_null(Auth::user()->avatar)) <img src="{{url('/static/images/default_avatar.png')}}" alt="Avatar del usuarios">@endif Hola : {{Auth::user()->name}}
+                            <a href="{{url('/login')}}" class="nav-link btn dropdown-toggle"  role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                                 @if(is_null(Auth::user()->avatar)) <img src="{{url('/static/images/default_avatar.png')}}" alt="Avatar del usuarios">
+                                 @endif Hola : {{Auth::user()->name}}
                             </a>
                             <ul class="dropdown-menu shadow">
                                 @if(Auth::user()->role == "1")

@@ -8,7 +8,21 @@
             <h2 class="title"><i class="fa-solid fa-user-pen"></i> Editar mi perfil</h2>
             </div>
             <div class="inside">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Error laboriosam sapiente, quasi similique cum vel nemo optio perferendis asperiores dignissimos vitae, ut eaque sunt atque rerum corporis quidem assumenda sint.
+                <div class="edit_avatar">
+                {!!Form::open(['url'=>'account/edit/avatar', 'id'=>'form_avatar_change','files'=>true])!!}
+                    <a href="" id="btn_avatar_edit">
+                        <div class="overlay" id="avatar_change_overlay">
+                            <i class="fa-solid fa-camera-retro"></i>
+                        </div>
+                    @if(is_null(Auth::user()->avatar)) 
+                        <img src="{{url('/static/images/default_avatar.png')}}" alt="Avatar del usuarios">
+                    @else
+                        <img src="{{url('/static/images/default_avatar.png')}}" alt="Avatar del usuarios">                    
+                    @endif
+                    </a>
+                    {!!Form::file('avatar',['id'=>'input_file_avatar','class'=>'form-control'])!!}
+                {!!Form::close()!!}
+                </div>
             </div>
         </div>
         <div class="panel shadow mtop32">
