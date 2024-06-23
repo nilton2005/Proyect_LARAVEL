@@ -10,7 +10,7 @@ use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Config; 
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Hash;
 
 
 class UserController extends Controller
@@ -80,4 +80,80 @@ class UserController extends Controller
 
         endif;
     }
+
+    public function postAccountPassword(Request $request){
+        $rules = [
+            'apassword' => 'required',
+            'password' => 'required|min:5',
+            'cpassword' => 'required|min:5|same:password'
+        ];
+        $messages = [
+            'apassword.required' =>'Deve ingresar su contraseña actual es incorrecta',
+            'password.required' =>'Debe ingresar la nueva contraseña',
+            'password.min' => 'La nueva contraseña deve tener minmo 5 caracteres',
+            'cpassword.required' => 'La confimacion deve tener minimo 5 caracteres',
+            'cpassword.min' => 'La nueva contrasea deve tener minimo 5 caracteres',
+            'cpassword.same' => 'Asegurese que  las contraseñas sean iguales al campo anterior ',
+        ];
+        $validator = validator::make($request->all(),$rules, $messages);
+        if($validator->fails()):
+            return back()->withErrors($validator)->with('message','Ocurrió un error.')->with('typealert','danger')->withInput();
+        else:
+            $u = User::find(Auth::id());
+            // Revisamos si las contraseñas de la BD conciden con la del input
+            if(Hash::check($request->input('apassword'),$u->password)):
+                $u->password = Hash::make($request->input('password'));
+            if($u->save()):
+                return back()->with('message', 'Se guardo correctamente su nueva contraseña')->with('typealert','success');
+            endif;
+            else:
+                return back()->withErrors($validator)->with('message','Por favor ingresa la contraseña actual de su cuenta')->with('typealert','danger');
+            endif;
+        endif;
+    }
+
+
+    public function postAccountInfo(Request $request){
+        $adultDate = now()->subYears(19)->format('Y-m-d');
+
+        $rules=[
+            'name' => 'required|min:3',
+            'lastname' => 'required|min:3',
+            'email' => 'email|required',
+            'phone' => 'required|min:9',
+            'birthday' => "required|before:$adultDate",
+            'gender' => 'required',
+        ];
+        $messages=[
+            'name.required' => 'El nombre es importante',
+            'name.min' => 'El nombre deve tener minimo 3 caracteres',
+            'lastname.required' =>'Su apellido es importante',
+            'lastname.min' => 'El apellido deve tener ms de 3 carecteres',
+            'email.required' => 'Es necesario su correo',
+            'email.email' => 'Deve insertar un email válido',
+            'phone.required'=>'Su telefono es nesesario',
+            'phone.min' => 'Deve insertar un número válido',
+            'birthday.required' => 'La fecha de nacimiento es importante',
+            'birthday.before' => 'Solo se permiten mayores de 18 años',
+            'gender.required' => 'El género es importante'
+        ];
+
+        $validator = validator::make($request->all(), $rules,$messages);
+        if($validator->fails()):
+            return back()->withErrors($validator)->with('message','Ocurrio un error.')->with('typealert','danger')->withInput();
+        else:
+            $u = User::find(Auth::id());
+            $u->name = e($request->input('name'));
+            $u->lastname = e($request->input('lastname'));
+            $u->phone = e($request->input('phone'));
+            $u->birthday = e($request->input('birthday'));
+            $u->gender = e($request->input('gender'));
+            if($u->save()):
+                return back()->with('message','Su información se actutalizó con exito.')->with('typealert','success');
+            endif;
+        endif;
+
+    }
+
+
 }

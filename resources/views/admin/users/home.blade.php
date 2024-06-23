@@ -41,6 +41,7 @@
                 <thead>
                     <tr>
                         <td>ID</td>
+                        <td></td>
                         <td>Nombre</td>
                         <td>Apellido</td>
                         <td>Email</td>
@@ -53,6 +54,13 @@
                     @foreach ($users as $user  )
                     <tr>
                         <td>{{$user->id}}</td>
+                        <td width="65"  >
+                            @if(is_null($user->avatar))
+                            <img src="{{url('/static/images/default_avatar.png')}}"  class="img-fluid rounded-circle   "  alt="Avatar_imge">
+                            @else
+                            <img src="{{url('/uploads_users/'.$user->id.'/'.$user->avatar)}}"  class="img-fluid  rounded-circle  "  alt="Avatar_imge">
+                            @endif
+                        </td>
                         <td>{{$user->name}}</td>
                         <td>{{$user->lastname}}</td>
                         <td>{{$user->email}}</td>

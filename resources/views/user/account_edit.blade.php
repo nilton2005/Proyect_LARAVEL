@@ -57,7 +57,7 @@
                         <div class="input-group  ">
                               <span class="input-group-text" id="basic-addon1"><i class="fa-regular fa-pen-to-square"></i></span>
     
-                            {!!Form::password('password',null,['class'=>'form-control '])!!}
+                            {!!Form::password('cpassword',null,['class'=>'form-control '])!!}
                         </div>
                     </div>
                 </div>
@@ -121,7 +121,7 @@
                         <div class="input-group">
                             <span class="input-group-text" id="basic-addon1">
                             </span>
-                            {!! Form::date('fecha_nacimiento', \Carbon\Carbon::now()->subYears(18), ['class' => 'form-control', 'required']) !!}
+                            {!! Form::date('birthday', Auth::user()->birthday, ['class' => 'form-control', 'required']) !!}
                         </div>
                     </div>
                 </div>
@@ -131,7 +131,7 @@
                         <div class="input-group">
                             <span class="input-group-text" id="basic-addon1">
                             </span>
-                            {!!Form::select('gender', ['0'=>'Sin especificar', '1'=>'Hombre', '3'=>'Mujer'],null,['class'=>'form-select'])!!}
+                            {!!Form::select('gender', ['0'=>'Sin especificar', '1'=>'Hombre', '3'=>'Mujer'],Auth::user()->gender,['class'=>'form-select'])!!}
              
                         </div>
                     </div>                  
