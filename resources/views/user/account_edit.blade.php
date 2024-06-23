@@ -17,10 +17,10 @@
                     @if(is_null(Auth::user()->avatar)) 
                         <img src="{{url('/static/images/default_avatar.png')}}" alt="Avatar del usuarios">
                     @else
-                        <img src="{{url('/static/images/default_avatar.png')}}" alt="Avatar del usuarios">                    
+                        <img src="{{url('/uploads_users/'.Auth::id().'/'.'av_'.Auth::user()->avatar)}}" alt="Avatar del usuarios">                    
                     @endif
                     </a>
-                    {!!Form::file('avatar',['id'=>'input_file_avatar','class'=>'form-control'])!!}
+                    {!!Form::file('avatar',['id'=>'input_file_avatar','accept' =>'image/*','class'=>'form-control'])!!}
                 {!!Form::close()!!}
                 </div>
             </div>

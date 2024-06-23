@@ -69,6 +69,12 @@ return [
             'root'=>'C:/www/Marketplace/public/uploads',
             // ruta publica
         ],
+        'uploads_user'=>[
+            'driver'=>'local',
+            // ruta local pra guardar lo archivos que se suban
+            'root'=>'C:/www/Marketplace/public/uploads_users',
+            // ruta publica  C:\www\Marketplace\public
+        ]
 
     ],
 
