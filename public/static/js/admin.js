@@ -78,16 +78,25 @@ function delete_object(e){
        icon= "info";
 
     }
-    swal({
+    Swal.fire({
         title: title,
         text: text,
         icon: icon,
-        buttons: true,
-        dangerMode: true,
-      })
-      .then((willDelete) => {
-        if (willDelete) {
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#f2f2f2",
+        confirmButtonText: "Si, estoy de acuerdo",
+
+
+      }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire({
+                title: "Listo!",
+                icon: "success"
+
+            });
              window.location.href = url;
+             
         }
       });
 }

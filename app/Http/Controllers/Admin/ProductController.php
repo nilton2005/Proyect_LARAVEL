@@ -303,7 +303,7 @@ public function postProductSearch(Request $request){
 
     $validator = Validator::make($request->all(), $rules, $messages);
     if($validator->fails()):
-        return back()->withErrors($validator)->with('message','Se ha producido un error')->with('typealert','danger')->withInput();
+        return redirect('/admin/products/1')->withErrors($validator)->with('message','Se ha producido un error')->with('typealert','danger')->withInput();
     else:
         switch($request->input('filter')):
             case '0':
