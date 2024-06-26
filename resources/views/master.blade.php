@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no">
     <title>@yield('title')- Autopartes</title>
     <meta name="csrf-token" content="{{csrf_token()}}">
     <meta name="routName" content="{{Route::currentRouteName()}}">
@@ -49,19 +49,19 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a href="{{url('/')}}" class="nav-link"><i class="fa-solid fa-house"></i> Inicio</a>
+                        <a href="{{url('/')}}" class="nav-link"><i class="fa-solid fa-house"></i> <span>Inicio</span></a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{url('/')}}" class="nav-link"><i class="fa-solid fa-shop"></i> Tienda</a>
+                        <a href="{{url('/')}}" class="nav-link"><i class="fa-solid fa-shop"></i> <span>Tienda</span></a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{url('/')}}" class="nav-link"> <i class="fa-solid fa-user-tie"></i> Sobre Nosotros</a>
+                        <a href="{{url('/')}}" class="nav-link"> <i class="fa-solid fa-user-tie"></i> <span>Sobre Nosotros</span></a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{url('/')}}" class="nav-link"><i class="fa-solid fa-shop"></i> Puntos de recojo</a>
+                        <a href="{{url('/')}}" class="nav-link"><i class="fa-solid fa-shop"></i> <span>Puntos de recojo</span></a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{url('/')}}" class="nav-link"><i class="fa-solid fa-phone"></i>  Contacto</a>
+                        <a href="{{url('/')}}" class="nav-link"><i class="fa-solid fa-phone"></i>  <span>Contacto</span></a>
                     </li>    
                     <li class="nav-item">
                         <a href="{{url('/')}}" class="nav-link"><i class="fa-solid fa-cart-shopping"></i> <span class="carnumber">0</span> </a>

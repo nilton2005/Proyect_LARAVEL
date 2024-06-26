@@ -19,7 +19,7 @@ class SettingsController extends Controller
         
         return view('admin.settings.settings');
     }
-
+    // recoje data y guarda en config
     public function postHome(Request $request){
         if(!file_exists(config_path().'/marketplace.php')):
             fopen(config_path().'/marketplace.php','w');

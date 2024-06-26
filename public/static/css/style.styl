@@ -185,3 +185,32 @@ nav
                 &:hover
                     background-color color2
                     color #000
+@media only screen and (max-width 728px)
+    nav
+        .navbar-nav 
+            display block !important
+            overflow hidden
+            margin-top 16px!important
+            li.nav-item
+                float left
+                display block
+                margin-right 0px
+                width 50%
+                margin-bottom 10px
+                &:hover
+                    color: red
+
+                a.nav-link
+                    text-align center
+                    
+                    i
+                        font-size 2.5em
+                    span
+                        display block
+                        font-size 1em
+                        font-weight normal
+                        margin-top 4px
+                &:last-child
+                    float inline-end
+                    width 100%
+
