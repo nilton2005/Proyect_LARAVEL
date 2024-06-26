@@ -106,9 +106,12 @@ class UserController extends Controller
             'user_edit'=> $request->input('user_edit'),
             'user_banned'=> $request->input('user_banned'),
             'user_permissions'=> $request->input('user_permissions'),
+            
+            // permisos para acceso a configuraciones
+            'settings' =>$request->input('settings'),
 
-
-
+            // permiso para acces a ornedenes
+            'orders_list' => $request->input('orders_list')
         ];
         $permissions = json_encode($permissions);
         $u->permissions = $permissions;

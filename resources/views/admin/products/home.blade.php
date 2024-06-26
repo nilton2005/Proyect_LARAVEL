@@ -3,7 +3,7 @@
 @section('title', 'Products')
 @section('breadcrumb')
 <li class="breadcrumb-item">
-    <a href="{{url('/admin/products')}}">
+    <a href="{{url('/admin/products/1')}}">
         <i class="fas fa-solid fa-store"></i> Productos</a>
 </li>
 <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>

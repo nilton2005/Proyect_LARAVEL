@@ -32,3 +32,4 @@ Route::get('/account/edit', 'UserController@getAccount')->name('account_edit');
 Route::post('/account/edit/avatar', 'UserController@postAccountAvatar')->name('account_avatar_edit');
 Route::post('/account/edit/password','UserController@postAccountPassword')->name('account_password_edit');
 Route::post('/account/edit/info','UserController@postAccountInfo')->name('account_info_edit');
+

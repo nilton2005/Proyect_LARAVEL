@@ -2,7 +2,7 @@
 @section('title', 'Agregar Producto')
 @section('breadcrumb')
 <li class="breadcrumb-item">
-    <a href="{{url('/admin/products')}}">
+    <a href="{{url('/admin/products/1')}}">
         <i class="fas fa-solid fa-store"></i> Productos</a>
 </li>
 

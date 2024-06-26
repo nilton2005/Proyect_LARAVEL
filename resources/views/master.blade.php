@@ -58,6 +58,9 @@
                         <a href="{{url('/')}}" class="nav-link"> <i class="fa-solid fa-user-tie"></i> Sobre Nosotros</a>
                     </li>
                     <li class="nav-item">
+                        <a href="{{url('/')}}" class="nav-link"><i class="fa-solid fa-shop"></i> Puntos de recojo</a>
+                    </li>
+                    <li class="nav-item">
                         <a href="{{url('/')}}" class="nav-link"><i class="fa-solid fa-phone"></i>  Contacto</a>
                     </li>    
                     <li class="nav-item">

@@ -19,7 +19,7 @@
             @csrf
 
             <div class="row">
-                {{--Esto sera para el modulo de dashboard que bienes de function mediante json--}}
+                {{--Esto sera para el modulo de dashboard que biene de function mediante json--}}
                 @foreach(user_permissions() as $key => $value)
                 <div class="col-md-4 flex ">
                     <div class="panel shadow">

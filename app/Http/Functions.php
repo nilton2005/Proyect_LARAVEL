@@ -61,6 +61,7 @@ function user_permissions(){
             'icon'=>'<i class="fa-solid fa-house-user"></i>',
             'title'=>'Modulo Dashboard',
             // Nombre de permisos para / Desciption
+            // Para añadir más permisos, UserController
             'permisos' =>[
                 'dashboard' =>'dashboard',
                 'dashboard_small_stats'=>'Acceso estadísticas',
@@ -100,8 +101,24 @@ function user_permissions(){
                     'user_banned' => 'Acceso a banear usuarios',
                     'user_permissions' => ' Acceso a todos los permisos de cada usuario'
     
-                ]
-                ],  
+            ]
+            ],  
+        'settings' =>[
+            'icon'=>'<i class="fa-solid fa-gears"></i>',
+            'title'=>'Modulo Configuraciones',
+            'permisos' => [
+                'settings' => 'Acceso modificar las configuraciones ',
+                    ]
+                    ],
+
+        'orders' =>[
+            'icon'=>'<i class="fa-solid fa-list-check"></i>',
+            'title'=>'Modulo Ordenes',
+            'permisos' => [
+                'orders_list' => 'Acceso lista de ordenes. ',
+
+                        ]
+            ],
 
     ];
 

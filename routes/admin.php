@@ -3,6 +3,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('/admin')->group(function(){
     Route :: get('/', 'Admin\DashboardController@getDashboard')->name('dashboard');
+
+    // Module Settings
+    Route::get('settings','Admin\SettingsController@getHome')->name('settings');
+    Route::post('settings','Admin\SettingsController@postHome')->name('settings');
+
+
+
     // Module users
     
     Route::get('/users/{status}', 'Admin\UserController@getUsers')->name('user_list');
