@@ -1,13 +1,17 @@
 body
+    align-items center
     background-color  wait
     margin 0px
+    display flex
+    justify-content center
+    min-height 100vh
     
 
 
 .mtop16
     margin-top 16px
     .btn
-        background-color: black
+        background-color: #000
 
 
 .box
@@ -54,4 +58,18 @@ body
     top 50%
     left 50%
     transform translate(-50%, -50%)
+
+@media only screen and (max-width 728px)
+    .box
+        width 90%
+        .box-login
+            position fixed
+            top 10%
+            left 90%
+            transform translate(-100%,-200%)
+    .mtop16
+        margin-top 16px
+        .btn
+            display inline-block
+            font-size 10px
         
