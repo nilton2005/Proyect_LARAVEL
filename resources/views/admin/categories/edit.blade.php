@@ -19,7 +19,7 @@
                 </div>
                 <div class="inside">
                 {{--Acciones que del formulario de edición de categorias  --}} 
-                    {!!Form::open(['url'=>'/admin/category/'.  $cat->id.' /edit'])!!}
+                    {!!Form::open(['url'=>'/admin/category/'.  $cat->id.' /edit', 'files'=>true])!!}
                     <label for="name">Nombre:</label>
                     <div class="input-group mtop16 ">
                           <span class="input-group-text" id="basic-addon1"><i class="fa-regular fa-pen-to-square"></i></span>
@@ -36,10 +36,9 @@
                     </div>
 
                     <label for="icon" class="mtop16">Ícono:</label>
-                    <div class="input-group mtop16 ">
-                          <span class="input-group-text" id="basic-addon1"><i class="fa-regular fa-pen-to-square"></i></span>
-
-                        {!!Form::text('icon',$cat->icon,['class'=>'form-control'])!!}
+                    <div class="form-file">
+                        {!!Form::file('icon',['class'=>'form-control','id'=>'formFile','accept'=>'image/*'])!!}
+                     
                     </div>
 
 
@@ -49,7 +48,22 @@
                 </div>
             </div>
 
-         </div>
+        </div>
+        @if(!is_null($cat->icon))
+            <div class="col-md-4">
+                <div class="panel shadow">
+                    <div class="header">
+                        <h2 class="title"><i class="fas fa-edit"></i>Icono</h2>
+                    </div>
+                    <div class="inside">
+                        <img src="{{url('/uploads/'.$cat->file_path.'/'.$cat->icon)}}" class="img-fluid" alt="Imagen de categoria" width="75%">
+                    </div>
+                </div>
+            </div>
+        @endif
+
+    
+    
 
     </div>
 </div>

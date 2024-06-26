@@ -18,7 +18,7 @@
 
                 </div>
                 <div class="inside">
-                    {!!Form::open(['url'=>'/admin/category/add'])!!}
+                    {!!Form::open(['url'=>'/admin/category/add','files'=>true])!!}
                     <label for="name">Nombre:</label>
                     <div class="input-group mtop16 ">
                           <span class="input-group-text" id="basic-addon1"><i class="fa-regular fa-pen-to-square"></i></span>
@@ -35,12 +35,10 @@
                     </div>
 
                     <label for="icon" class="mtop16">Ícono:</label>
-                    <div class="input-group mtop16 ">
-                          <span class="input-group-text" id="basic-addon1"><i class="fa-regular fa-pen-to-square"></i></span>
-
-                        {!!Form::text('icon',null,['class'=>'form-control'])!!}
+                    <div class="form-file">
+                        {!!Form::file('icon',['class'=>'form-control','id'=>'formFile','accept'=>'image/*'])!!}
+                     
                     </div>
-
                     @if(kvfj(Auth::user()->permissions, 'category_add'))
                         {!!Form::submit('Guardar', ['class'=>'btn btn-success mtop16'])!!}
                         {!!Form::close()!!}
@@ -65,15 +63,19 @@
                     <table class="table mtop16">
                         <thead>
                             <tr>
-                                <td></td>
+                                <td width="64" ></td>
                                 <td>Nombre</td>
-                                <td></td>
+                                <td  width = "100"></td>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($cats as $cat)
                             <tr>
-                                <td>{!! htmlspecialchars_decode($cat->icon)!!}</td>
+                                <td>
+                                    @if(!is_null($cat->icon))
+                                        <img src="{{url('/uploads/'.$cat->file_path.'/'.$cat->icon)}}" class="img-fluid" alt="Imagen de la categoria">
+                                    @endif
+                                </td>
                                 <td>{{$cat->name}}</td>
                                 <td>
                                     <div class="opts">

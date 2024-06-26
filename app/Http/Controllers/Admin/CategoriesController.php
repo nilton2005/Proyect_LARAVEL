@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Models\Category;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
-
+use Symfony\Component\Console\Input\Input;
+use Illuminate\Support\Facades\Config;
 
 class CategoriesController extends Controller
 {
@@ -42,13 +43,24 @@ class CategoriesController extends Controller
         if($validator->fails()):
             return back()->withErrors($validator)->with('message','Se ha producido un error')->with('typealert','danger');
         else:
+            // Ubicación de guardado de icono
+
+            $path = '/'.date('Y-m-d');
+            $fileExt = trim($request->file('icon')->getClientOriginalExtension());
+            $upload_path = Config::get('filesystems.disks.uploads.root');
+            $name = Str::slug(str_replace($fileExt,'',$request->file('icon')->getClientOriginalName()));
+            $filename = time().'-'.$name.'.'.$fileExt;
 
             $c = new Category;
             $c->module = $request->input('module');
             $c->name = e($request->input('name'));
+            $c->file_path = $path;
             $c->slug = Str::slug($request->input('name'));
-            $c->icon = e($request->input('icon'));
+            $c->icon = $filename;
             if($c->save()):
+                if($request->hasFile('icon')):
+                    $lf  = $request->icon->storeAs($path,$filename,'uploads');
+                endif;
                 return back()->with('message','Se guardo la nueva categoria con exito')->with('typealert','success');
             endif;
 
@@ -65,15 +77,11 @@ class CategoriesController extends Controller
 
         public function postCategoryEdit(Request $request,$id){
         $rules = [
-            'name' =>'unique:categories,name|required|max:255', 
-            'icon' =>'required',
+            'name' =>'required|max:255', 
 
         ];
         $messages = [
-            'name.unique' => 'El nombre ya existe',
             'name.required' => 'El nombre es obligatorio',
-            'name.max' => 'El nombre no puede superar los 255 caracteres',
-            'icon.required' => 'El ícono es obligatorio',
         ];
         $validator = Validator::make($request->all(), $rules, $messages);
 
@@ -86,7 +94,22 @@ class CategoriesController extends Controller
             $cat->name = e($request->input('name'));
             // eliminar en caso de produccion
             $cat->slug = Str::slug($request->input('name'));
-            $cat->icon = e($request->input('icon'));
+            if($request->hasFile('icon')):
+                $actual_icon = $cat->icon;
+                $actual_file_path = $cat->file_path;
+                $path = '/'.date('Y-m-d');
+                $fileExt = trim($request->file('icon')->getClientOriginalExtension());
+                // Cambiar en caso de producción
+                $upload_path = Config::get('filesystems.disks.uploads.root');
+                $name = Str::slug(str_replace($fileExt,'',$request->file('icon')->getClientOriginalName()));
+                $filename = time().'-'.$name.'.'.$fileExt;
+                $fl = $request->icon->storeAs($path,$filename,'uploads');
+                $cat->file_path = date('Y-m-d');
+                $cat->icon = $filename;
+                if(!is_null($actual_icon)):
+                    unlink($upload_path.'/'.$actual_file_path.'/'.$actual_icon);
+                endif;
+            endif;
             if($cat->save()):
                 return back()->with('message','Se guardo la nueva categoria con exito')->with('typealert','success');
             endif;
