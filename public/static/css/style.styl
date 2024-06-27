@@ -228,6 +228,8 @@ nav
                     background-color #f8f8f8
                     border-radius 0px
                     color #111
+                    padding  12px
+                    border-radius 0px
                     img
                         position relative
                         margin-top -3px
@@ -235,6 +237,42 @@ nav
                         width 24px
                     &:hover
                         color #fff
+
+
+    .input-group
+        
+
+        position relative
+        border 0px
+        i
+            position absolute
+            font-size 1.4em
+            top 12px
+            left 15px
+            z-index 10
+        .form-control
+            border-radius 6px 0px 0px 6px
+            z-index 2
+            padding 10px 16px
+            padding-left 46px
+            z-index 2
+            #button-addon1:active 
+                    border-color none !important
+            &:focus 
+                border 1px solid red
+                
+        &:focus-within
+            i
+                color red
+            .btn
+                background-color red
+                color #ffff
+        .btn 
+            background-color #111
+            color #fff
+
+
+
 
 
 @media only screen and (max-width 728px)
