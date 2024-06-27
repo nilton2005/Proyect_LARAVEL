@@ -1,6 +1,7 @@
 @extends('master')
 @section('title', 'Inicio')
 @section('content')
+<section>
     <div class="home_action_bar">
         <div class="row">
             <div class="col-md-3">
@@ -28,4 +29,24 @@
             </div>
         </div>
     </div>
+</section>
+<section>
+    <div class="mkslider">
+        <div class="mk-slider-item">
+            1
+        </div>
+        <div class="mk-slider-item">
+            2
+        </div>
+        <div class="mk-slider-item">
+            3
+        </div>
+        <div class="mk-slider-item">
+            4
+        </div>
+        <div class="mk-slider-item">
+            5
+        </div>
+    </div>
+</section>
 @endsection
