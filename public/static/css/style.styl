@@ -2,7 +2,7 @@ color1 = red
 color2 = #fdd700
 
 body
-    background-color #f9f9f9
+    background-color #f1f1f1
     font-size 15px
     font-family 'Roboto' , sans-serif
 
@@ -185,6 +185,58 @@ nav
                 &:hover
                     background-color color2
                     color #000
+
+// Categorias
+.home_action_bar
+    background-color #fff
+    border-radius 4px
+    padding 8px
+    margin-top 25px
+    .categories
+        position relative
+        a
+            background-color #000
+            border-radius 4px
+            color #fff
+            display block
+            padding 12px
+            width 100%
+            font-size 16px
+            text-transform uppercase
+            text-decoration none
+            &:hover
+                background-color #ec0001
+                color #fff
+        &:active
+        &:focus
+            a   
+                background-color #fff
+        &:hover
+            ul
+                display block
+
+        ul
+            display none
+            list-style none
+            padding 0px
+            margin 0px
+            position absolute
+            width 100%
+
+            li
+                a
+                    background-color #f8f8f8
+                    border-radius 0px
+                    color #111
+                    img
+                        position relative
+                        margin-top -3px
+                        margin-right 10px
+                        width 24px
+                    &:hover
+                        color #fff
+
+
 @media only screen and (max-width 728px)
     nav
         .navbar-nav 
