@@ -285,13 +285,51 @@ nav
         border-right 1px solid #fff
         display none
         border-radius 4px
-        background-color #111
+        background-color #fff
         color #fff
         font-size 4em
         justify-content center
         position absolute
         width 100% !important
         min-height 380px
+    ul.navigation
+        display block
+        width 100%
+        margin 0px
+        position absolute
+        top calc(50% - 18px)
+        overflow hidden
+        padding 0px
+        z-index 9
+        li
+            display inline-flex
+            float left
+            a   
+                align-content center
+                background-color rgba(0,0,0,.4)
+                border-radius 50%
+                display flex
+                justify-content center
+                font-size 1.4em
+                height 36px
+                width 36px
+                text-decoration none
+                color #fff
+            &:first-child
+                margin-left 29px
+                a
+                    i
+                        position relative
+                        margin-left 2px
+                        margin-top 8px
+            &:last-child
+                float right
+                margin-right 29px
+                a
+                    i
+                        position relative
+                        margin-right 2px
+                        margin-top 8px
 
 
 

@@ -31,22 +31,6 @@
     </div>
 </section>
 <section>
-    <div class="mkslider">
-        <div class="mk-slider-item">
-            1
-        </div>
-        <div class="mk-slider-item">
-            2
-        </div>
-        <div class="mk-slider-item">
-            3
-        </div>
-        <div class="mk-slider-item">
-            4
-        </div>
-        <div class="mk-slider-item">
-            5
-        </div>
-    </div>
+    @include('components.sliders_home')
 </section>
 @endsection
