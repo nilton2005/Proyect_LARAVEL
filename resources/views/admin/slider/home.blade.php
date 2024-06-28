@@ -82,7 +82,7 @@
                         <tbody>
                             @foreach($sliders as $slider)
                             <tr>
-                                <td width="150">
+                                <td width="20%">
                                     <img src="{{url('uploads/'.$slider->file_path.'/'.$slider->file_name)}}" alt="imagen del slide" class="img-fluid">
                                 </td>
 
@@ -93,7 +93,7 @@
                                     </div>
                                 </td>
 
-                                <td width="100">
+                                <td width="50%">
                                     <div class="opts">
                                         @if(kvfj(Auth::user()->permissions, 'slider_edit'))
                                             <a href="{{url('/admin/slider/'.$slider->id.'/edit')}}" class="edit" title="Editar" data-placement = "top" data-toggle= "tooltip"><i class="fas fa-edit"></i></a>

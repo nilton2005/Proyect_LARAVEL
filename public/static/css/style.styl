@@ -273,8 +273,8 @@ nav
 
 // Slide
 .mkslider
-    display flex
-    min-height 380px
+    display block
+    min-height 900px
     flex-wrap wrap
     margin-top 24px
     width 100%
@@ -287,18 +287,50 @@ nav
         border-radius 4px
         background-color #fff
         color #fff
-        font-size 4em
+        font-size 1em
         justify-content center
         position absolute
         width 100% !important
-        min-height 380px
+        min-height 100px
         transition .5s all ease-in-out
+        .col-md-7
+        .col-md-5
+            padding 0px
+        .row
+            margin 0px
+            padding 0px
+        .content
+            align-items center
+            color #333
+            display flex !important
+            height 100%
+            justify-content center
+     
+            h2
+            p
+                padding block
+                width 100%
+            .cinside
+                text-align left
+                padding-left 20px
+                border-left 4px solid red
+                max-width 50%
+                
+                h2
+                    font-size 1em
+                .btn
+                    display inline-flex
+                    color #fff
+                    background-color color2
+                    margin 0px auto
+
+
     ul.navigation
         display block
         width 100%
         margin 0px
         position absolute
-        top calc(50% - 18px)
+        top calc(30% - 18px)
         overflow hidden
         padding 0px
         z-index 9

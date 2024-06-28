@@ -54,7 +54,7 @@
 
             @if(kvfj(Auth::user()->permissions,'sliders_list'))
             <li>
-                <a href="{{url('/admin/sliders')}}" class="lk-sliders_list"><i class="fa-solid fa-sliders"></i>Sliders
+                <a href="{{url('/admin/sliders')}}" class="lk-sliders_list lk-slider-edit"><i class="fa-solid fa-sliders"></i>Sliders
                 </a>
             </li>
             @endif
@@ -62,7 +62,6 @@
             @if(kvfj(Auth::user()->permissions,'orders_list'))
             <li>
                 <a href="{{url('/admin/orders/all')}}" class="lk-orders_list"> <i class="fa-solid fa-list-check"></i>Ordenes
-
                 </a>
             </li>
             @endif
