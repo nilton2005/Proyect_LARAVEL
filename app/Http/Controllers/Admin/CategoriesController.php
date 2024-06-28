@@ -43,8 +43,8 @@ class CategoriesController extends Controller
         if($validator->fails()):
             return back()->withErrors($validator)->with('message','Se ha producido un error')->with('typealert','danger');
         else:
+            
             // Ubicación de guardado de icono
-
             $path = '/'.date('Y-m-d');
             $fileExt = trim($request->file('icon')->getClientOriginalExtension());
             $upload_path = Config::get('filesystems.disks.uploads.root');

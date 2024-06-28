@@ -111,7 +111,14 @@ class UserController extends Controller
             'settings' =>$request->input('settings'),
 
             // permiso para acces a ornedenes
-            'orders_list' => $request->input('orders_list')
+            'orders_list' => $request->input('orders_list'),
+            // permiso para aceso a los sliders
+            'sliders_list' => $request->input('sliders_list'),
+            'slider_add' => $request->input('slider_add'),
+            'slider_edit' => $request->input('slider_edit'),
+            'slider_delete' => $request->input('slider_delete'),
+
+
         ];
         $permissions = json_encode($permissions);
         $u->permissions = $permissions;

@@ -44,4 +44,11 @@ Route::prefix('/admin')->group(function(){
     Route::get('/category/{id}/edit', 'Admin\CategoriesController@getCategoryEdit')->name('category_edit');
     Route::post('/category/{id}/edit', 'Admin\CategoriesController@postCategoryEdit')->name('category_edit');
     Route::get('/category/{id}/delete', 'Admin\CategoriesController@getCategoryDelete')->name('category_delete');
+
+    // Module Sliders
+    Route::get('/sliders','Admin\SliderController@getHome')->name('sliders_list');
+    Route::post('slider/add','Admin\SliderController@postSliderAdd')->name('slider_add');
+    Route::get('slider/{id}/edit','Admin\SliderController@getSliderEdit')->name('slider_edit');
+    Route::post('slider/{id}/edit','Admin\SliderController@postSliderEdit')->name('slider_edit');
+    Route::get('slider/{id}/delete','Admin\SliderController@getSliderDelete')->name('slider_delete');
 });

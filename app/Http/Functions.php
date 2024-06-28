@@ -103,6 +103,16 @@ function user_permissions(){
     
             ]
             ],  
+        'sliders' =>[
+                'icon'=>'<i class="fa-solid fa-sliders"></i>',
+                'title'=>'Modulo Sliders',
+                'permisos' => [
+                        'sliders_list' => 'Acceso lista de sliders. ',
+                        'slider_add' => 'Acceso añadir Slides',
+                        'slider_edit' => 'Acceso editar Slides',
+                        'slider_delete' => 'Puede eliminar Slides'
+                            ]
+                ],   
         'settings' =>[
             'icon'=>'<i class="fa-solid fa-gears"></i>',
             'title'=>'Modulo Configuraciones',

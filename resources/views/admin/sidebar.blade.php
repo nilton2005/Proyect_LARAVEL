@@ -44,11 +44,17 @@
                 <a href="{{url('/admin/users/all')}}" class="lk-user_list lk-user_edit lk-user_permissions"><i class="fa-solid fa-users-line"></i>Usuarios</a>
             </li>
             @endif
-
             @if(kvfj(Auth::user()->permissions,'settings'))
             <li>
                 <a href="{{url('/admin/settings')}}" class="lk-settings"><i class="fa-solid fa-gears"></i>Configuraciónes
 
+                </a>
+            </li>
+            @endif
+
+            @if(kvfj(Auth::user()->permissions,'sliders_list'))
+            <li>
+                <a href="{{url('/admin/sliders')}}" class="lk-sliders_list"><i class="fa-solid fa-sliders"></i>Sliders
                 </a>
             </li>
             @endif

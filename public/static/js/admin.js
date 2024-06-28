@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
     for(i = 0; i < btn_deleted.length; i++){
         btn_deleted[i].addEventListener('click', delete_object);
     }
-    console.log(btn_deleted);
+
 });
 $(document).ready(function(){
     editor_init('editor');
