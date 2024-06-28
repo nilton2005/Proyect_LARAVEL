@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/','contentController@getHome' );
+Route::get('/','contentController@getHome' )->name('home');
 // Module Auth
 Route::get('/login', 'ConnectController@getLogin')->name('login');
 Route::post('/login', 'ConnectController@postLogin')->name('login');
@@ -33,3 +33,7 @@ Route::post('/account/edit/avatar', 'UserController@postAccountAvatar')->name('a
 Route::post('/account/edit/password','UserController@postAccountPassword')->name('account_password_edit');
 Route::post('/account/edit/info','UserController@postAccountInfo')->name('account_info_edit');
 
+
+// Ajax Apli Routers
+
+Route::get('/mk/api/load/products/{section}','ApiJsController@getProductsSection');

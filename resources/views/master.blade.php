@@ -7,6 +7,7 @@
     <title>@yield('title')- Autopartes</title>
     <meta name="csrf-token" content="{{csrf_token()}}">
     <meta name="routName" content="{{Route::currentRouteName()}}">
+    <meta name="currency" content="{{Config::get('marketplace.currency')}}">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
