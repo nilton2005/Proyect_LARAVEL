@@ -26,7 +26,7 @@
 
   <!--<script src="https://cdn.ckeditor.com/4.22.0/standard/ckeditor.js"></script> -->
     <script src="{{url('/static/js/mkslider.js?v='.time())}}"></script>  
-    <script src="{{url('/static/js/site.js?v='.time())}}"></script>
+    <script src="{{url('/static/js/site.js')}}"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 

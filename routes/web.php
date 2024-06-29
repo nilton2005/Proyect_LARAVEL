@@ -37,3 +37,5 @@ Route::post('/account/edit/info','UserController@postAccountInfo')->name('accoun
 // Ajax Apli Routers
 
 Route::get('/mk/api/load/products/{section}','ApiJsController@getProductsSection');
+Route::post('/mk/api/favorites/add/{object}/{module}','ApiJsController@postFavoriteAdd');
+
