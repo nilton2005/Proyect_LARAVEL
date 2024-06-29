@@ -5,6 +5,7 @@ const route = document.getElementsByName('routName')[0].getAttribute('content');
 const http = new XMLHttpRequest();
 const csrfToken = document.getElementsByName('csrf-token')[0].getAttribute('content');
 const currency = document.getElementsByName('currency')[0].getAttribute('content');
+const auth = document.getElementsByName('auth')[0].getAttribute('content');
 var page = 1;
 var page_section = "";
 
@@ -72,7 +73,13 @@ function load_products(section){
                                 div += "<div class=\"btns\">";
                                     div += "<a href=\""+base+"/uploads/"+product.id+"/"+product.slug+"\" ><i class=\"fa-solid fa-eye\"></i></a>";
                                     div += "<a href=\"#\" ><i class=\"fa-solid fa-cart-plus\"></i></a>";
-                                    div += "<a href=\"#\" onclick=\"add_to_favorites('"+product.id+"','1'); return false\"><i class=\"fa-regular fa-heart\"></i></a>";
+                                    if(auth== "1"){
+                                        div += "<a href=\"#\" id=\"favorite_1_"+product.id+"\"  onclick=\"add_to_favorites('"+product.id+"','1'); return false\"><i class=\"fa-regular fa-heart\"></i></a>";                                        
+                                    }else{
+                                        div += `<a href="#" id="favorite_1_${product.id}" onclick="Swal.fire({title: 'Huyy', text: 'Hola, parese que  necesitas ingresar a tu cuenta ', icon: 'info'}) ; return false"><i class="fa-regular fa-heart"></i></a>`;
+                                        
+                                    }
+
                                 div += "</div>";
                             div += "</div>";
                             div+="<img src=\""+base+"/uploads/"+product.file_path+"/t_"+product.image+"\">"
@@ -101,7 +108,10 @@ function add_to_favorites(object, module){
         if(this.readyState == 4 && this.status == 200){ 
             var data = this.responseText;
             data = JSON.parse(data);
-            console.log(data);
+            console.log(data)
+            if(data.status=="success"){
+                document.getElementById('favorite_'+module+'_'+object).classList.add('favorite_active')
+            }
         }
     }
 }
