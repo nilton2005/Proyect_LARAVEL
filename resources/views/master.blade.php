@@ -47,12 +47,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a href="{{url('/')}}" class="nav-link"><i class="fa-solid fa-house"></i> <span>Inicio  <button type="button" class="btn btn-secondary"
-        data-bs-toggle="tooltip" data-bs-placement="top"
-        data-bs-custom-class="custom-tooltip"
-        data-bs-title="This top tooltip is themed via CSS variables.">
-  Custom tooltip
-</button> </span></a>
+                        <a href="{{url('/')}}" class="nav-link"><i class="fa-solid fa-house"></i> <span>Inicio</span></a>
                     </li>
                     <li class="nav-item">
                         <a href="{{url('/')}}" class="nav-link"><i class="fa-solid fa-shop"></i> <span>Tienda  </span></a>
@@ -92,11 +87,15 @@
                            
                                 @endif
                                     <li>
+                                        <a class="dropdown-item" href=" {{url('/account/favorites')}} "><i class="fa-regular fa-heart"></i>Favoritos</a>
+                                    </li>
+                                    <li>
                                         <a class="dropdown-item" href=" {{url('/account/edit')}} "><i class="fa-solid fa-user-tie"></i>Mi cuenta</a>
                                     </li>
                                     <li>
                                         <a class="dropdown-item" href="{{url('/logout')}}"><i class="fa-solid fa-arrow-right-from-bracket"></i>Salir</a>
                                     </li>
+                                    
                             </ul>
                         </li>                 
                     @endif

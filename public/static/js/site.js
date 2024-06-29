@@ -72,7 +72,7 @@ function load_products(section){
                                 div += "<div class=\"btns\">";
                                     div += "<a href=\""+base+"/uploads/"+product.id+"/"+product.slug+"\" ><i class=\"fa-solid fa-eye\"></i></a>";
                                     div += "<a href=\"#\" ><i class=\"fa-solid fa-cart-plus\"></i></a>";
-                                    div += "<a href=\"#\" ><i class=\"fa-regular fa-heart\"></i></a>";
+                                    div += "<a href=\"#\" onclick=\"add_to_favorites('"+product.id+"','0'); return false\"><i class=\"fa-regular fa-heart\"></i></a>";
                                 div += "</div>";
                             div += "</div>";
                             div+="<img src=\""+base+"/uploads/"+product.file_path+"/t_"+product.image+"\">"
@@ -89,4 +89,9 @@ function load_products(section){
             console.error("Error en la conexion");
         }
     }
+}
+
+function add_to_favorites(object, module){
+    url = base+'/mk/api/favorites/add/'+object+'/'+module;
+    console.log(url);
 }
