@@ -21,11 +21,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
-    <script>
-        $(document).ready(function() {
-            $('[data-bs-toggle="tooltip"]').tooltip();
-        })
-    </script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
 
@@ -52,16 +47,21 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a href="{{url('/')}}" class="nav-link"><i class="fa-solid fa-house"></i> <span>Inicio</span></a>
+                        <a href="{{url('/')}}" class="nav-link"><i class="fa-solid fa-house"></i> <span>Inicio  <button type="button" class="btn btn-secondary"
+        data-bs-toggle="tooltip" data-bs-placement="top"
+        data-bs-custom-class="custom-tooltip"
+        data-bs-title="This top tooltip is themed via CSS variables.">
+  Custom tooltip
+</button> </span></a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{url('/')}}" class="nav-link"><i class="fa-solid fa-shop"></i> <span>Tienda</span></a>
+                        <a href="{{url('/')}}" class="nav-link"><i class="fa-solid fa-shop"></i> <span>Tienda  </span></a>
                     </li>
                     <li class="nav-item">
                         <a href="{{url('/')}}" class="nav-link"> <i class="fa-solid fa-user-tie"></i> <span>Sobre Nosotros</span></a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{url('/')}}" class="nav-link"><i class="fa-solid fa-shop"></i> <span>Puntos de recojo</span></a>
+                        <a href="{{url('/')}}" class="nav-link"><i class="fa-solid fa-shop"></i> <span>Puntos de recojo </span></a>
                     </li>
                     <li class="nav-item">
                         <a href="{{url('/')}}" class="nav-link"><i class="fa-solid fa-phone"></i>  <span>Contacto</span></a>

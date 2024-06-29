@@ -349,7 +349,7 @@ nav
                 text-decoration none
                 color #fff
             &:first-child
-                margin-left 29px
+                margin-left 20px
                 a
                     i
                         position relative
@@ -363,7 +363,116 @@ nav
                         position relative
                         margin-right 2px
                         margin-top 8px
+.load_more_products
+    margin-bottom 24px
+    a
+        display block
+        border-radius 4px
+        background-color red
+        color #fff
+        font bold
+        width 40%
+        position relative
+        margin-left 30%
+        padding: 8px
+        text-align center
+        text-transform uppercase
+        text-decoration none
+        &:hover
+            background-color color2
+            color #333
 
+
+
+.products_list
+    display block
+    margin-top 30px
+    padding 0px
+    overflow hidden
+    width 100%
+    .product
+        display inline-block
+        float left
+        width 18%
+        margin-bottom 23px
+        margin-right 2.5%
+        position relative
+        &:nth-child(5n)
+            margin-right 0px
+        .image
+            display block
+            width 100%
+            position relative
+            overflow hidden 
+            .overlay
+                position absolute
+                background-color rgba(0,0,0,.3)
+                display none
+                width 100%
+                z-index 9
+                flex 1
+                height 100%
+                transition .3s all ease-in-out
+                border-radius 4px
+                .btns
+                    position absolute
+                    bottom 8px
+                    display block
+                    left 3%
+                    overflow hidden
+                    width 94%
+                    a   
+                        background-color #fff
+                        border-radius 4px
+                        box-sizing border-box
+                        color #333
+                        display block
+                        font-size 1.2em
+                        padding 0px
+                        float left
+                        margin-right 2%
+                        text-align center
+                        width 32%
+                        &:last-child
+                            margin-right:  0px
+            img
+                display block
+                width 100%
+                border-radius 4px
+                transform scale(1)
+                transition .3s all ease-in-out
+                z-index 5
+        &:hover
+            .image
+                img
+                    transform scale(1.2);
+                .overlay
+                    display flex
+        a   
+            display block
+            text-decoration none
+            width 100%
+            position relative
+            .image
+            .title
+            .price
+            .options
+                display block
+                width 100%
+
+            .price     
+                margin-top 8px
+            .title
+                font-size 1.2em
+                color #111
+            .price
+                font-size 1.4em
+                font-weight bold
+                color #111
+                margin-top 4px
+
+
+        
 
 
 @media only screen and (max-width 728px)

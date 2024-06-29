@@ -1,6 +1,7 @@
 @extends('master')
 @section('title', 'Inicio')
 @section('content')
+
 <section>
     <div class="home_action_bar">
         <div class="row">
@@ -35,10 +36,10 @@
 </section>
 
 <section>
-    <div class="container">
-        <div class="products_list" id="products_list">
-
+    
+    <div class="products_list" id="products_list"> </div>
+        <div class="load_more_products">
+            <a href="#"  id="load_more_products" >Mas Productos</a>
         </div>
-    </div>
 </section>
 @endsection
