@@ -10,7 +10,16 @@ var page = 1;
 var page_section = "";
 var products_list_ids_temp = [];
 
+$(document).ready(function(){
+    $('.slick-slider').slick({
+        arrows: true,
+        autoplay: true,
+        prevArrow: '<i class="fa-solid fa-chevron-left"></i>',
+        nextArrow: '<i class="fa-solid fa-chevron-right"></i>'
+    });
 
+  });
+      
 document.addEventListener('DOMContentLoaded', function() {
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
     const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
@@ -73,7 +82,7 @@ function load_products(section){
                     div += "<div class=\"image\">";
                             div += "<div class=\"overlay\">";
                                 div += "<div class=\"btns\">";
-                                    div += "<a href=\""+base+"/uploads/"+product.id+"/"+product.slug+"\" ><i class=\"fa-solid fa-eye\"></i></a>";
+                                    div += "<a href=\""+base+"/product/"+product.id+"/"+product.slug+"\" ><i class=\"fa-solid fa-eye\"></i></a>";
                                     div += "<a href=\"#\" ><i class=\"fa-solid fa-cart-plus\"></i></a>";
                                     if(auth== "1"){
                                         div += "<a href=\"#\" id=\"favorite_1_"+product.id+"\"  onclick=\"add_to_favorites('"+product.id+"','1'); return false\"><i class=\"fa-regular fa-heart\"></i></a>";                                        
@@ -122,8 +131,9 @@ function mark_user_favorites(objects){
             console.log(data.objects);
             if(data.count > "0"){
                 data.objects.forEach(function(favorite, index){
-                    document.getElementById('favorite_1_'+favorite).removeAttribute('onclik');
-                    document.getElementById('favorite_1_'+favorite).classList.add('favorite_active')
+                    document.getElementById('favorite_1_'+favorite).classList.add('favorite_active');
+                    document.getElementById('favorite_1_'+favorite).removeAttribute('onclick');
+
                 })
             }
             }
@@ -143,8 +153,8 @@ function add_to_favorites(object, module){
             data = JSON.parse(data);
             console.log(data)
             if(data.status=="success"){
-                document.getElementById('favorite_1_'+module+'_'+object).removeAttribute('onclik');
-                document.getElementById('favorite_'+module+'_'+object).classList.add;('favorite_active')
+                document.getElementById('favorite_'+module+'_'+object).removeAttribute('onclick');
+                document.getElementById('favorite_'+module+'_'+object).classList.add('favorite_active');
             }
         }
     }

@@ -26,6 +26,10 @@ Route::post('/register', 'ConnectController@postRegister')->name('register');
 Route::get('/logout', 'ConnectController@getLogout')->name('logout');
 
 
+// Module products
+
+Route::get('/product/{id}/{slug}','ProductController@getProduct');
+
 // Module  action
 
 Route::get('/account/edit', 'UserController@getAccount')->name('account_edit');
