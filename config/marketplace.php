@@ -6,5 +6,6 @@ return [
 'map'=>'ubicacion1',
 'maintenance_mode'=>'0',
 'product_per_paginate'=>'5',
+'product_per_paginate_random'=>'10',
 ]
 ;

@@ -69,7 +69,14 @@
                     <label for="product_per_page">Productos para mostrar por página</label>
                     <div class="input-group">
                             <span class="input-group-text" id="basic-addon1" ></span>
-                        {!!Form::text('product_per_paginate',Config::get('marketplace.product_per_paginate'),['class'=>'form-control'])!!}
+                        {!!Form::number('product_per_paginate',Config::get('marketplace.product_per_paginate'),['class'=>'form-control' , 'min'=>1, 'required' ])!!}
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="product_per_page">Productos para mostrar por página ALEATORIAMENTE </label>
+                    <div class="input-group">
+                            <span class="input-group-text" id="basic-addon1" ></span>
+                        {!!Form::number('product_per_paginate_random',Config::get('marketplace.product_per_paginate_random'),['class'=>'form-control', 'min'=> 1 , 'required'])!!}
                     </div>
                 </div>
             </div>

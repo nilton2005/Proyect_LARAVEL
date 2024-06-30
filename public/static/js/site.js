@@ -8,6 +8,7 @@ const currency = document.getElementsByName('currency')[0].getAttribute('content
 const auth = document.getElementsByName('auth')[0].getAttribute('content');
 var page = 1;
 var page_section = "";
+var products_list_ids_temp = [];
 
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -65,6 +66,7 @@ function load_products(section){
                 load_more_products.style.display = "none";
             };
             data.data.forEach(function(product, index){
+                products_list_ids_temp.push(product.id);
                 console.log(product.name);
                 var div = "";
                 div += "<div class=\"product\">";
@@ -84,7 +86,7 @@ function load_products(section){
                             div += "</div>";
                             div+="<img src=\""+base+"/uploads/"+product.file_path+"/t_"+product.image+"\">"
                     div += "</div>";
-                    div +=   "<a href=\""+base+"/uploads/"+product.id+"/"+product.slug+"\">";
+                    div +=   "<a href=\""+base+"/uploads/"+product.id+"/"+product.slug+"\" title=\""+product.name+"\">";
                         div += "<div class=\"title\">"+product.name+"</div>";
                         div += "<div class=\"price\">"+currency+""+product.price+"</div>";
                         div += "<div class=\"options\"></div>";
@@ -92,10 +94,41 @@ function load_products(section){
                 div += "</div>";
                 products_list.insertAdjacentHTML('beforeend', div);
             });
+
+            if(auth== "1"){
+                mark_user_favorites(products_list_ids_temp);
+                products_list_ids_temp = [];
+            }
         } else {
             console.error("Error en la conexion");
         }
     }
+}
+
+function mark_user_favorites(objects){
+   
+    var url = base + '/mk/api/load/user/favorites';
+    var params = 'module=1&objects='+objects;
+    console.log(objects)
+    http.open('POST', url, true);
+    http.setRequestHeader('X-CSRF-TOKEN', csrfToken);
+    http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    http.send(params);
+    http.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200){
+            var data = this.responseText;
+            data = JSON.parse(data);
+
+            console.log(data.objects);
+            if(data.count > "0"){
+                data.objects.forEach(function(favorite, index){
+                    document.getElementById('favorite_1_'+favorite).removeAttribute('onclik');
+                    document.getElementById('favorite_1_'+favorite).classList.add('favorite_active')
+                })
+            }
+            }
+    }
+
 }
 
 function add_to_favorites(object, module){
@@ -110,7 +143,8 @@ function add_to_favorites(object, module){
             data = JSON.parse(data);
             console.log(data)
             if(data.status=="success"){
-                document.getElementById('favorite_'+module+'_'+object).classList.add('favorite_active')
+                document.getElementById('favorite_1_'+module+'_'+object).removeAttribute('onclik');
+                document.getElementById('favorite_'+module+'_'+object).classList.add;('favorite_active')
             }
         }
     }

@@ -18,12 +18,13 @@ class ApiJsController extends Controller
     }
     function getProductsSection($section,Request $request){
         $items_x_page = Config::get('marketplace.product_per_paginate');
+        $items_x_page_random = Config::get('marketplace.product_per_paginate_random');
         switch($section):
             case 'home':
-                $products = Product::where('status',1)->inRandomOrder()->paginate($items_x_page);
+                $products = Product::where('status',1)->inRandomOrder()->paginate($items_x_page_random);
                 break;
             default:
-                $products = Product::where('status',1)->inRandomOrder()->paginate($items_x_page);
+                $products = Product::where('status',1)->inRandomOrder()->paginate($items_x_page_random);
                 break;
             endswitch;
 
@@ -41,12 +42,27 @@ class ApiJsController extends Controller
             $favorite->module = $module;
             $favorite->object_id = $object;
             if($favorite->save()):
-                $data = ['status'=>'success', 'smg'=>'Que bueno que te guste'];
+                $data = ['status'=>'success', 'smg'=>'Sabe de autos,  producto guardado'];
                 
             endif;
         endif;
 
         return response()->json($data);
 
+    }
+
+    public function postUserFavorites(Request $request){
+        $objects = json_decode($request->input('objects'),true);
+        $query = Favorite::where('user_id',Auth::id())->where('module',$request->input('module'))->whereIn('object_id', explode(",",$request->input('objects')))->pluck('object_id');
+        if(count(collect($query))>0):
+            $data = ['status'=>'success', 'count' => count(collect($query)), 'objects'=> $query];
+        else:
+            $data = ['status'=>'success', 'count' => count(collect($query))];
+        endif;
+        return response()->json($data);
+
+
+        
+        //return response()->json($request->input('objects'));
     }
 }
