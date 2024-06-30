@@ -3,11 +3,23 @@
 @section('title', 'Categorias')
 @section('breadcrumb')
 <li class="breadcrumb-item">
-    <a href="{{url('/admin/categories')}}">
+    <a href="{{url('/admin/categories/0')}}">
         <i class="fa-regular fa-folder"></i> Categorias</a>
 </li>
-@endsection
+@if($cat->parent != "0")
+    <li class="breadcrumb-item">
+        <a href="{{url('/admin/category/'.$cat->parent.'/subs')}}">
+            <i class="fa-regular fa-folder"></i> {{$cat->parent}}</a>
+    </li>
 
+@else
+    <li class="breadcrumb-item">
+        <a href="{{url('/admin/category/'.$cat->id.'/edit')}}">
+            <i class="fa-regular fa-folder"></i> Editando el {{$cat->name}}</a>
+    </li>
+@endif
+@endsection
+ 
 @section('content')
 <div class="container-fluid">
     <div class="row">
@@ -28,19 +40,18 @@
                     </div>
 
 
-                    <label for="module" class='mtop16'>Módulo:</label>
-                    <div class="input-group  mtop16">
-                          <span class="input-group-text" id="basic-addon1"><i class="fa-regular fa-pen-to-square"></i></span>
-
-                          {{form::select('module',getModulesArray(),$cat->module,['class'=>'form-select'])}}                    
-                    </div>
-
                     <label for="icon" class="mtop16">Ícono:</label>
                     <div class="form-file">
                         {!!Form::file('icon',['class'=>'form-control','id'=>'formFile','accept'=>'image/*'])!!}
                      
                     </div>
 
+                    <label for="name" class="mtop16">Orden:</label>
+                    <div class="input-group mtop16 ">
+                          <span class="input-group-text" id="basic-addon1"><i class="fa-regular fa-pen-to-square"></i></span>
+
+                        {!!Form::number('order',$cat->order,['class'=>'form-control '])!!}
+                    </div>
 
                     {!!Form::submit('Guardar', ['class'=>'btn btn-success mtop16'])!!}
                     {!!Form::close()!!}

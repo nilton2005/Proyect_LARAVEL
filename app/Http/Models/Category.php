@@ -13,5 +13,8 @@ class Category extends Model
     protected $table = 'categories';
     protected $hidden = ['creted_at', 'updated_at'];
 
+    public function getSubcategories(){
+        return $this->hasMany(Category::class, 'parent', 'id');
+    }
 
 }
