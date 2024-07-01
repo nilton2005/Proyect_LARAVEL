@@ -20,8 +20,9 @@ class CategoriesController extends Controller
         $this->middleware('isadmin');
     }
     public function getHome($module){
-        $cats = Category::where('module', $module)->where('parent','0')->orderBy('name', 'Asc')->get();
-        $data = ['cats'=>$cats, 'module'=>$module];
+        $cats = Category::where('module', $module)->where('parent', 0)->orderBy('name', 'Asc')->get();
+        $data = ['cats' => $cats, 'module' => $module];
+
         
         return view('admin.categories.home', $data);
     }

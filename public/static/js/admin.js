@@ -1,11 +1,14 @@
 var base = location.protocol + "//" + location.host;
 // Extraer los metas de master en admin
 var route = document.getElementsByName('routName')[0].getAttribute('content');
+const http = new XMLHttpRequest();
+const csrfToken = document.getElementsByName('csrf-token')[0].getAttribute('content');
 
 
 // Document ready event listener
 document.addEventListener('DOMContentLoaded', function() {
     // activacion de la barra de busqueda
+    var category = document.getElementById('category');
 
     var btn_search = document.getElementById('btn_search');
     var form_search = document.getElementById('form_search');
@@ -20,9 +23,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    if (route == "product_add") {
+        setSubCategoriesToProducts();
+        }
+
+
     // Comprobar si la ruta actual es la ruta de edición del producto
     if (route == "product_edit") {
-
+        setSubCategoriesToProducts();
         // Obtener los elementos del botón y de entrada para la imagen del producto
         var btn_product_file_imagen = document.getElementById('btn_product_file_image');
         var product_file_image = document.getElementById('product_file_image');
@@ -41,6 +49,9 @@ document.addEventListener('DOMContentLoaded', function() {
     btn_deleted = document.getElementsByClassName('btn-deleted');
     for(i = 0; i < btn_deleted.length; i++){
         btn_deleted[i].addEventListener('click', delete_object);
+    }
+    if(category){
+        category.addEventListener('change', setSubCategoriesToProducts);
     }
 
 });
@@ -99,4 +110,29 @@ function delete_object(e){
              
         }
       });
+}
+
+function setSubCategoriesToProducts(){
+    var parent_id = category.value;
+    var subcategory_actual = document.getElementById('subcategory_actual').value;
+    select = document.getElementById('subcategory')
+    var url = base + '/admin/mk/api/load/subcategories/'+parent_id;
+    select.innerHTML = "";
+    http.open('GET', url, true);
+    http.setRequestHeader('X-CSRF-TOKEN', csrfToken);
+    http.send();
+    http.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200){
+            var data = this.responseText;
+            data = JSON.parse(data);
+            data.forEach(function(element, index){
+                if(subcategory_actual == element.id){
+                    select.innerHTML +="<option value=\""+element.id+"\" selected>"+element.name+"</option>"
+
+                }else{
+                    select.innerHTML +="<option value=\""+element.id+"\">"+element.name+"</option>"
+                }
+            })
+            }
+    }
 }

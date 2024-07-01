@@ -24,7 +24,7 @@
         <div class="inside">
             {!!Form::open(['url'=>'/admin/product/add','files'=>true])!!}
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-12">
                     <label for="name">Nombre del producto:</label>
                     <div class="input-group">
                           <span class="input-group-text" id="basic-addon1"><i class="fa-regular fa-pen-to-square"></i></span>
@@ -32,23 +32,26 @@
                         {!!Form::text('name',null,['class'=>'form-control'])!!}
                     </div>
                 </div>
-                <div class="col-md-3">
+            </div>
+            <div class="row mtop16">
+                <div class="col-md-6">
                     <label for="name" >Categoría</label>
                     <div class="input-group">
                         <span class="input-group-text" id="basic-addon1"><i class="fa-regular fa-pen-to-square"></i></span>
 
-                        {!!form::select('category',$cats,0,['class'=>'form-select'])!!}                    
+                        {!!form::select('category',$cats,0,['class'=>'form-select', 'id'=>'category'])!!}         
+                        {!!Form::hidden('subcategory_actual', 0,['id'=>'subcategory_actual'])!!}        
                   </div>
+                  <div class="col-md-6">
+                    <label for="name" >Subcategoria:</label>
+                    <div class="input-group">
+                        <span class="input-group-text" id="basic-addon1"><i class="fa-regular fa-pen-to-square"></i></span>
 
-
+                        {!!Form::select('subcategory',[],null,['class'=>'form-select', 'id'=>'subcategory', 'required'])!!}                    
+                     </div>
                 </div>
-                <div class="col-md-4">
-                    <label for="name">Imagen Destada</label>
-                    <div class="mb-3">
-                        {!!Form::file('img',['class'=>'form-control', 'id'=>'formFile', 'accept'=>'image/*'])!!}
-       
-                    </div>
                 </div>
+                
             </div>
 
             <div class="row mtop16">
@@ -65,7 +68,7 @@
                     </div>
                 </div>
                 {{--columna para la oferta--}}
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <label for="indiscount">¿ en Oferta? </label>
                     <div class="input-group">
                         <span class="input-group-text" id="basic-addon1"><i class="fa-regular fa-pen-to-square"></i></span>
@@ -79,6 +82,14 @@
                         {!!Form::number('discount', 0.00, ['class'=>'form-control', 'min'=>'0.00','step'=>'any'])!!}
                     </div>
                 </div>
+                <div class="col-md-3">
+                    <label for="name">Imagen Destada</label>
+                    <div class="mb-3">
+                        {!!Form::file('img',['class'=>'form-control', 'id'=>'formFile', 'accept'=>'image/*'])!!}
+       
+                    </div>
+                </div>
+
             </div>
             {{--New spaces for products --}}
             <div class="row mtop16">

@@ -37,6 +37,10 @@
     <link rel="stylesheet" href="{{url('/static/css/style.css?v='.time())}}">
 
 
+
+
+
+
 </head>
 
 <body>
@@ -55,7 +59,7 @@
                         <a href="{{url('/')}}" class="nav-link"><i class="fa-solid fa-shop"></i> <span>Tienda  </span></a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{url('/')}}" class="nav-link"> <i class="fa-solid fa-user-tie"></i> <span>Sobre Nosotros</span></a>
+                        <a href="{{url('/about_us')}}" class="nav-link"> <i class="fa-solid fa-user-tie"></i> <span>Sobre Nosotros</span></a>
                     </li>
                     <li class="nav-item">
                         <a href="{{url('/')}}" class="nav-link"><i class="fa-solid fa-shop"></i> <span>Puntos de recojo </span></a>

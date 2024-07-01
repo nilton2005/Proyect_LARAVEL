@@ -52,4 +52,9 @@ Route::prefix('/admin')->group(function(){
     Route::get('slider/{id}/edit','Admin\SliderController@getSliderEdit')->name('slider_edit');
     Route::post('slider/{id}/edit','Admin\SliderController@postSliderEdit')->name('slider_edit');
     Route::get('slider/{id}/delete','Admin\SliderController@getSliderDelete')->name('slider_delete');
+
+
+    // JS request
+    Route::get('/mk/api/load/subcategories/{parent}','Admin\ApiController@getSubCategories');
+
 });

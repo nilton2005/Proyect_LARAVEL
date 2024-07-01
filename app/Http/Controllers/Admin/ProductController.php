@@ -53,7 +53,7 @@ class ProductController extends Controller
 
     public function getProductAdd(){
         // llamamos a la BD para traer las categorias
-        $cats = Category::where('module','0')->pluck('name','id');
+        $cats = Category::where('module','0')->where('parent','0')->pluck('name','id');
         $data  = ['cats'=> $cats];
         return view('admin.products.add', $data);
     }
@@ -117,6 +117,8 @@ class ProductController extends Controller
             $product->in_discount = e($request->input('indiscount'));
             $product->discount = e($request->input('discount'));
             $product->content = e($request->input('content'));
+            $product->subcategory_id = $request->input('subcategory');
+
             if($product->save()):
                 // Guardar imagen con los nomber en uploads
                 if($request->hasFile('img')):
@@ -131,7 +133,7 @@ class ProductController extends Controller
                 //return redirect('admin/products')->with('message','Producto agregado con exito')->with('typealert','success'
 
                 endif;
-                return redirect('admin/products/1')->with('message','Producto agregado con exito')->with('typealert','success') ;
+                return redirect('admin/products/'.$product->id.'/edit')->with('message','Producto agregado con exito')->with('typealert','success') ;
             endif;
         endif;
 
@@ -139,7 +141,7 @@ class ProductController extends Controller
 
     public function getProductEdit($id){
         $p = Product::findOrFail($id);
-        $cats = Category::where('module','0')->pluck('name','id');
+        $cats = Category::where('module','0')->where('parent',0)->pluck('name','id');
         $data  = ['cats'=> $cats, 'p'=>$p];
         return view('admin.products.edit', $data);
         # $product :: find($id);
@@ -172,6 +174,8 @@ class ProductController extends Controller
             $product->name = e($request->input('name'));
             //$product->slug = Str::slug($request->input('name'));
             $product->category_ID = $request->input('category');
+            $product->subcategory_id = $request->input('subcategory');
+
             if($request->hasFile('img')):
                 $path = '/'.date('Y-m-d');
                 //Limpiar espacios para tener solo la extension

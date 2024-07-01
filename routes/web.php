@@ -37,7 +37,10 @@ Route::post('/account/edit/avatar', 'UserController@postAccountAvatar')->name('a
 Route::post('/account/edit/password','UserController@postAccountPassword')->name('account_password_edit');
 Route::post('/account/edit/info','UserController@postAccountInfo')->name('account_info_edit');
 
-
+// Anai
+Route::get('/about_us', function(){
+    return view('actions/about_us');
+});
 // Ajax Apli Routers
 
 

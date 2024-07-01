@@ -17,7 +17,9 @@ class Product extends Model
     public function cat(){
         return $this->belongsTo(Category::class, 'category_ID');
     }
-
+    public function getSubcategory(){
+        return $this->hasOne(Category::class, 'id', 'subcategory_id');
+    }
 
     public function getGallery(){
         return $this->hasMany(PGallery::class, 'product_id', 'id');

@@ -10,7 +10,6 @@
 
 @endsection
 
-
 @section('content')
 <div class="container-fluid">
     <div class="row">
@@ -24,7 +23,7 @@
                     {{--Envio del fomulario--}}
                 {!!Form::open(['url'=>'/admin/product/'.$p->id.'/edit','files'=>true])!!}
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-12">
                         <label for="name">Nombre del producto:</label>
                         <div class="input-group">
                             <span class="input-group-text" id="basic-addon1"><i class="fa-regular fa-pen-to-square"></i></span>
@@ -32,29 +31,31 @@
                             {!!Form::text('name',$p->name,['class'=>'form-control'])!!}
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <label for="name" >Categoría</label>
+                </div>
+                <div class="row mtop16">
+                    <div class="col-md-6">
+                        <label for="name" >Categoría padre:</label>
                         <div class="input-group">
                             <span class="input-group-text" id="basic-addon1"><i class="fa-regular fa-pen-to-square"></i></span>
 
-                            {!!form::select('category',$cats,$p->category_ID,['class'=>'form-select'])!!}                    
+                            {!!Form::select('category',$cats,$p->category_ID,['class'=>'form-select', 'id' => 'category' ])!!}       
+                            {!!Form::hidden('subcategory_actual', $p->subcategory_id,['id'=>'subcategory_actual'])!!}             
+                         </div>
                     </div>
+                    <div class="col-md-6">
+                        <label for="name" >Subcategoria:</label>
+                        <div class="input-group">
+                            <span class="input-group-text" id="basic-addon1"><i class="fa-regular fa-pen-to-square"></i></span>
 
-
-                    </div>
-                    <div class="col-md-4">
-                        <label for="name">Imagen Destacada</label>
-                        <div class="mb-3">
-                            {!!Form::file('img',['class'=>'form-control', 'id'=>'formFile', 'accept'=>'image/*'])!!}
-        
-                        </div>
+                            {!!Form::select('subcategory',[],$p->subcategory_id,['class'=>'form-select', 'id'=>'subcategory', 'required'])!!}                    
+                         </div>
                     </div>
                 </div>
-
+                
                 <div class="row">
 
                     {{--columna para la precio--}}
-                    <div class="col-md-3">
+                    <div class="col-md-3 mtop16">
                         <label for="price"> Precio: </label>
 
                         <div class="input-group">
@@ -66,25 +67,25 @@
                         </div>
                     </div>
                     {{--columna para la oferta--}}
-                    <div class="col-md-3">
+                    <div class="col-md-2 mtop16">
                         <label for="indiscount">¿ en Oferta? </label>
                         <div class="input-group">
                             <span class="input-group-text" id="basic-addon1"><i class="fa-regular fa-pen-to-square"></i></span>
                             {{form::select('indiscount',['0'=>'No', '1'=>'Si'],$p->in_discount,['class'=>'form-select'])}}
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3 mtop16">
                         <label for="discount">Descuento: </label>
                         <div class="input-group">
                             <span class="input-group-text" id="basic-addon1"><i class="fa-regular fa-pen-to-square"></i></span>
                             {!!Form::number('discount', $p->discount, ['class'=>'form-control', 'min'=>'0.00','step'=>'any'])!!}
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <label for="indiscount">Estado: </label>
-                        <div class="input-group">
-                            <span class="input-group-text" id="basic-addon1"><i class="fa-regular fa-pen-to-square"></i></span>
-                            {{form::select('status',['0'=>'Privado', '1'=>'Público'],$p->status,['class'=>'form-select'])}}
+                    <div class="col-md-4 mtop16">
+                        <label for="name">Imagen Destacada</label>
+                        <div class="mb-3">
+                            {!!Form::file('img',['class'=>'form-control', 'id'=>'formFile', 'accept'=>'image/*'])!!}
+        
                         </div>
                     </div>
                 </div>
@@ -103,6 +104,14 @@
                         <div class="input-group">
                             <span class="input-group-text" id="basic-addon1"><i class="fa-regular fa-pen-to-square"></i></span>
                                 {!!Form::text('code', $p->code, ['class'=>'form-control'])!!}
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <label for="indiscount">Estado: </label>
+                        <div class="input-group">
+                            <span class="input-group-text" id="basic-addon1"><i class="fa-regular fa-pen-to-square"></i></span>
+                            {{form::select('status',['0'=>'Privado', '1'=>'Público'],$p->status,['class'=>'form-select'])}}
                         </div>
                     </div>
 
