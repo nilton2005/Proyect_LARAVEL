@@ -93,7 +93,7 @@
                         <td>{{$p->name}} @if($p->status == 0) <i class="fa-solid fa-lock" data-bs-toggle="tooltip" data-bs-placement="top"
                             data-bs-custom-class="custom-tooltip"
                             data-bs-title="Estado: Privado"></i>  @endif</td>
-                        <td>{{ $p->cat ? $p->cat->name : 'No category' }}>>{{$p->getSubcategory->name}}</td>
+                        <td>{{ $p->cat ? $p->cat->name : 'No category' }} @if($p->subcategory_id != 0) <i class="fa-solid fa-arrow-right"></i> {{$p->getSubcategory->name}} @endif</td>
                         <td>{{$p->price}}</td>
                         <td>
                            

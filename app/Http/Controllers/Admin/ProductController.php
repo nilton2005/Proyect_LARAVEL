@@ -33,16 +33,16 @@ class ProductController extends Controller
     public function getHome($status){
         switch ($status){
             case '0':
-                $products = Product::with(['cat'])->where('status',0)  ->orderBy('id', 'desc')->paginate(5);  
+                $products = Product::with(['cat', 'getSubcategory'])->where('status',0)  ->orderBy('id', 'desc')->paginate(5);  
                 break;
             case '1':
-                $products = Product::with(['cat'])->where('status',1)  ->orderBy('id', 'desc')->paginate(5);
+                $products = Product::with(['cat', 'getSubcategory'])->where('status',1)  ->orderBy('id', 'desc')->paginate(5);
                 break;
             case 'all':
-                $products = Product::with(['cat'])->orderBy('id', 'desc')->paginate(5);
+                $products = Product::with(['cat', 'getSubcategory'])->orderBy('id', 'desc')->paginate(5);
                 break;
             case 'trash':
-                $products = Product::with(['cat'])->onlyTrashed()->orderBy('id', 'desc')->paginate(5);  
+                $products = Product::with(['cat', 'getSubcategory'])->onlyTrashed()->orderBy('id', 'desc')->paginate(5);  
                 break;
         }
         
@@ -133,7 +133,7 @@ class ProductController extends Controller
                 //return redirect('admin/products')->with('message','Producto agregado con exito')->with('typealert','success'
 
                 endif;
-                return redirect('admin/products/'.$product->id.'/edit')->with('message','Producto agregado con exito')->with('typealert','success') ;
+                return redirect('admin/product/'.$product->id.'/edit')->with('message','Producto agregado con exito')->with('typealert','success') ;
             endif;
         endif;
 

@@ -8,6 +8,9 @@ body
 
 .mtop16
     margin-top 16px
+
+.mtop24
+    margin-top 24px
 .mtop32
     margin-top 32px
 
@@ -390,10 +393,10 @@ nav
 
 .products_list
     display block
-    margin-top 30px
     padding 0px
     overflow hidden
     width 100%
+    margin-top 12px
     .product
         display inline-block
         float left
@@ -489,6 +492,77 @@ nav
     margin-top 20px
     padding 5px
 
+    .btn-success
+        background-color color1
+        border 0px
+        color #fff
+        width 100%
+    .price
+        font-size 2.3em
+        font-weight 700 
+
+
+    .category
+        ul
+            list-style none
+            margin 0px
+            overflow hidden
+            padding 0px
+            li
+                display flex
+                margin 0px 6px
+                float left
+                .next
+                    color #666
+                    display block
+                    font-size .7em
+                    position relative
+                    margin-top 4px
+                a
+                    color #333
+                    display inline-block
+                    text-decoration none
+                    img
+                        display block
+                        height 15px
+                        width 15px
+                    i
+                        color color2
+                    &:hover
+                        text-decoration underline
+                &:first-child
+                    margin-left 0px
+    .inside
+        padding 12px
+    .content
+        margin-top 24px
+        padding 24px
+        border-top 1px solid #f0f0f0
+    .quantity
+        overflow hidden
+
+        .amount_action
+            align-items center
+            display flex
+            background-color color1
+            border-radius 50%
+            display flex
+            color #fff
+            float left
+            justify-content center
+            height: 30px
+            text-decoration none
+            width 30px
+            &:first-child
+                margin-right 8px
+            &:last-child
+                margin-left 9px
+        .form-control
+            float left
+            width calc(100% - 80px)
+        
+
+
 .slick-next
     right 100px
 .slick-prev
@@ -513,8 +587,9 @@ nav
     &:hover
         background-color rgba(255, 0, 0, 0.79)
 
-
-
+.home_tile
+    font-size 1.8em
+    font-weight 700
 
 @media only screen and (max-width 728px)
     nav
@@ -564,6 +639,29 @@ nav
                     top 0px
                 ul.shadow
                     box-shadow none !important
+    .home_action_bar 
+        form 
+            margin-top 16px
+    .mkslider
+            display none 
+    .products_list
+        .product
+            margin-right 2%
+            width 49%
+            &:nth-child(5n)
+                margin-right 0px !important
+            &:nth-child(even)
+                margin-right 0px
+    .product_single
+        .btn-success
+            background-color color1
+            color #222
+        h2.title
+            margin-bottom 7px
+        .category
+            background color #000
+            padding 4px
+        h2.title
+            font-size 1.4em
 
-
-            
+        

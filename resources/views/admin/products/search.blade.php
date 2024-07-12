@@ -51,10 +51,10 @@
                         {!!Form::text('search',null,['class'=>'form-control','placeholder'=>'Ingrese su busqueda','required'])!!}
                     </div>
                     <div class="col-md-4">
-                        {!!Form::select('filter', ['0'=>'Nombre del producto','1'=>'Código'],0,['class'=>'form-control'])!!}
+                        {!!Form::select('filter', ['0'=>'Nombre del producto','1'=>'Código'],0,['class'=>'form-select'])!!}
                     </div>
                     <div class="col-md-2">
-                        {!!Form::select('status', ['0'=>'Privado','1'=>'Público'],0,['class'=>'form-control'])!!}
+                        {!!Form::select('status', ['0'=>'Privado','1'=>'Público'],0,['class'=>'form-select'])!!}
                     </div>
                     <div class="col-md-2">
                         {!!Form::submit('Buscar', ['class'=>'btn btn-primary'])!!}
@@ -93,7 +93,7 @@
                         <td>{{$p->name}} @if($p->status == 0) <i class="fa-solid fa-lock" data-bs-toggle="tooltip" data-bs-placement="top"
                             data-bs-custom-class="custom-tooltip"
                             data-bs-title="Estado: Privado"></i>  @endif</td>
-                        <td>{{ $p->cat ? $p->cat->name : 'No category' }}</td>
+                        <td>{{ $p->cat ? $p->cat->name : 'No category' }} @if($p->subcategory_id != 0) <i class="fa-solid fa-arrow-right"></i> {{$p->getSubcategory->name}} @endif</td>
                         <td>{{$p->price}}</td>
                         <td>
                            

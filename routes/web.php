@@ -49,3 +49,6 @@ Route::get('/mk/api/load/products/{section}','ApiJsController@getProductsSection
 Route::post('/mk/api/load/user/favorites','ApiJsController@postUserFavorites');
 Route::post('/mk/api/favorites/add/{object}/{module}','ApiJsController@postFavoriteAdd');
 
+
+
+Route::get('/puntos-de-recojo', 'PuntoRecojoController@index')->name('puntos.de.recojo');

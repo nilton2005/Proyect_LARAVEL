@@ -80,6 +80,7 @@
                         <tbody>
                             @foreach($cats as $cat)
                             <tr>
+                           
                                 <td>
                                     @if(!is_null($cat->icon))
                                         <img src="{{url('/uploads/'.$cat->file_path.'/'.$cat->icon)}}" class="img-fluid" alt="Imagen de la categoria">

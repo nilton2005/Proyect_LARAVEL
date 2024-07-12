@@ -3,7 +3,7 @@
 @section('content')
 
 <section>
-    <div class="home_action_bar">
+    <div class="home_action_bar shadow">
         <div class="row">
             <div class="col-md-3">
                 <div class="categories">
@@ -32,11 +32,12 @@
     </div>
 </section>
 <section>
-    @include('components.sliders_home')
+    @include('components/sliders_home')
 </section>
 
 
 <section>
+    <h2 class="home_tile mtop32"> Productos Destacados </h2>
     
     <div class="products_list" id="products_list"> </div>
         <!--<div class="load_more_products">
